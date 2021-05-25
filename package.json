@@ -64,7 +64,6 @@
   "bugs": {
     "url": "https://github.com/creativetimofficial/black-dashboard-angular/issues"
   },
-  "homepage": "https://demos.creative-tim.com/black-dashboard-angular/#/dashboard",
   "private": false,
   "dependencies": {
     "@angular-devkit/build-angular": "0.1100.5",

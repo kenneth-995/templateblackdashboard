@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 
 // Serve static files
-app.use(express.static(__dirname + '/dist/BLACK-DASHBOARD-ANGULAR-MASTER'));
+app.use(express.static(__dirname + '/dist/black-dashboard-angular-master/index.html'));
 
 // Send all requests to index.html
 app.get('/*', function(req, res) {
@@ -13,3 +13,5 @@ app.get('/*', function(req, res) {
 // default Heroku port
 console.log('hello! in port ' + process.env.PORT)
 app.listen(process.env.PORT || 5000);
+
+/*   "homepage": "https://demos.creative-tim.com/black-dashboard-angular/#/dashboard", */
