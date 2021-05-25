@@ -86,6 +86,7 @@
     "@ng-select/ng-select": "^6.1.0",
     "chart.js": "2.9.4",
     "core-js": "3.8.1",
+    "ngx-spinner": "^11.0.1",
     "ngx-toastr": "13.2.0",
     "rxjs": "6.6.3",
     "tslib": "2.0.3",
