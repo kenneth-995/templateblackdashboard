@@ -7,7 +7,9 @@ app.use(express.static(__dirname + '/dist/black-dashboard-angular-master/index.h
 
 // Send all requests to index.html
 app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname + '/dist/BLACK-DASHBOARD-ANGULAR-MASTER/index.html'));
+  console.log(res)
+  console.log(req)
+  res.sendFile(path.join(__dirname + '/dist/black-dashboard-angular-master/index.html'));
 });
 
 // default Heroku port
