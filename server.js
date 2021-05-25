@@ -3,13 +3,13 @@ const express = require('express');
 const app = express();
 
 // Serve static files
-app.use(express.static(__dirname + '/dist/black-dashboard-angular-master/index.html'));
+app.use(express.static(__dirname + '/dist/black-dashboard-angular'));
 
 // Send all requests to index.html
 app.get('/*', function(req, res) {
   console.log(res)
   console.log(req)
-  res.sendFile(path.join(__dirname + '/dist/black-dashboard-angular-master/index.html'));
+  res.sendFile(path.join(__dirname + '/dist/black-dashboard-angular/index.html'));
 });
 
 // default Heroku port
