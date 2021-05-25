@@ -7,8 +7,8 @@ app.use(express.static(__dirname + '/dist/black-dashboard-angular'));
 
 // Send all requests to index.html
 app.get('/*', function(req, res) {
-  console.log(res)
-  console.log(req)
+  console.log('__dirname')
+  console.log(__dirname)
   res.sendFile(path.join(__dirname + '/dist/black-dashboard-angular/index.html'));
 });
 
