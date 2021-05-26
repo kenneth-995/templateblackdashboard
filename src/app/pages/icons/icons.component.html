@@ -4,61 +4,35 @@
     <div class=" col-md-12">
       <div class=" card">
         <div class=" card-header">
-          <h4 class=" card-title">Simple Table</h4>
+          <h4 class=" card-title">Patients Table</h4>
         </div>
         <div class=" card-body">
           <div class=" table-responsive">
             <table class=" table tablesorter" id="">
               <thead class=" text-primary">
                 <tr>
-                  <th>Name</th>
-                  <th>Country</th>
-                  <th>City</th>
-                  <th class=" text-center">Salary</th>
+                  <th scope="col" class="text-center">#</th>
+                  <th scope="col" class="text-center">Photo</th>
+                  <th scope="col" class="text-center">Fullname</th>
+                  <th scope="col" class="text-center">Telephone</th>
+                  <th scope="col" class="text-center">email</th>
+                  <th scope="col" class="text-center">Age</th>
+                  <th scope="col" class="text-center">Action</th>
+                  <th scope="col" class="text-center" *ngIf='roleUser ===1 || roleUser===2'>Action</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Dakota Rice</td>
-                  <td>Niger</td>
-                  <td>Oud-Turnhout</td>
-                  <td class=" text-center">$36,738</td>
-                </tr>
-                <tr>
-                  <td>Minerva Hooper</td>
-                  <td>CuraÃ§ao</td>
-                  <td>Sinaai-Waas</td>
-                  <td class=" text-center">$23,789</td>
-                </tr>
-                <tr>
-                  <td>Sage Rodriguez</td>
-                  <td>Netherlands</td>
-                  <td>Baileux</td>
-                  <td class=" text-center">$56,142</td>
-                </tr>
-                <tr>
-                  <td>Philip Chaney</td>
-                  <td>Korea, South</td>
-                  <td>Overland Park</td>
-                  <td class=" text-center">$38,735</td>
-                </tr>
-                <tr>
-                  <td>Doris Greene</td>
-                  <td>Malawi</td>
-                  <td>Feldkirchen in KÃ¤rnten</td>
-                  <td class=" text-center">$63,542</td>
-                </tr>
-                <tr>
-                  <td>Mason Porter</td>
-                  <td>Chile</td>
-                  <td>Gloucester</td>
-                  <td class=" text-center">$78,615</td>
-                </tr>
-                <tr>
-                  <td>Jon Porter</td>
-                  <td>Portugal</td>
-                  <td>Gloucester</td>
-                  <td class=" text-center">$98,615</td>
+                <tr *ngFor='let p of patients let i = index' scope="row" class="text-center">
+                  <td>{{i+1}}</td>
+                  <td><img [src]="p.urlPhoto" style="width: 30px; height: 30px; border-radius: 100%;" [alt]="p.name"></td>
+                  <td>{{p.name + ' ' + p.surname}}</td>
+                  <td>{{p.phoneNumber}}</td>
+                  <td>{{p.email}}</td>
+                  <td>{{p.age}}</td>
+                  <!-- <td><button class="btn btn-primary mb-2" (click)='editPatient(p, i)'>Edit</button></td> -->
+                  <td><button class="btn btn-primary mb-2" (click)='openModalEditPatient(p, i)'><i class="fas fa-pencil-alt"></i></button></td>
+                  <td *ngIf='roleUser ===1 || roleUser===2'><button class="btn btn-danger"
+                      (click)='deletePatient(p.id, i)'><i class="far fa-trash-alt"></i></button></td>
                 </tr>
               </tbody>
             </table>
@@ -66,71 +40,143 @@
         </div>
       </div>
     </div>
-    <div class=" col-md-12">
-      <div class=" card card-plain">
-        <div class=" card-header">
-          <h4 class=" card-title">Table on Plain Background</h4>
-          <p class=" category">Here is a subtitle for this table</p>
-        </div>
-        <div class=" card-body">
-          <div class=" table-responsive">
-            <table class=" table tablesorter" id="">
-              <thead class=" text-primary">
-                <tr>
-                  <th>Name</th>
-                  <th>Country</th>
-                  <th>City</th>
-                  <th class=" text-center">Salary</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Dakota Rice</td>
-                  <td>Niger</td>
-                  <td>Oud-Turnhout</td>
-                  <td class=" text-center">$36,738</td>
-                </tr>
-                <tr>
-                  <td>Minerva Hooper</td>
-                  <td>CuraÃ§ao</td>
-                  <td>Sinaai-Waas</td>
-                  <td class=" text-center">$23,789</td>
-                </tr>
-                <tr>
-                  <td>Sage Rodriguez</td>
-                  <td>Netherlands</td>
-                  <td>Baileux</td>
-                  <td class=" text-center">$56,142</td>
-                </tr>
-                <tr>
-                  <td>Philip Chaney</td>
-                  <td>Korea, South</td>
-                  <td>Overland Park</td>
-                  <td class=" text-center">$38,735</td>
-                </tr>
-                <tr>
-                  <td>Doris Greene</td>
-                  <td>Malawi</td>
-                  <td>Feldkirchen in KÃ¤rnten</td>
-                  <td class=" text-center">$63,542</td>
-                </tr>
-                <tr>
-                  <td>Mason Porter</td>
-                  <td>Chile</td>
-                  <td>Gloucester</td>
-                  <td class=" text-center">$78,615</td>
-                </tr>
-                <tr>
-                  <td>Jon Porter</td>
-                  <td>Portugal</td>
-                  <td>Gloucester</td>
-                  <td class=" text-center">$98,615</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
+
   </div>
 </div>
+
+<ng-template #modalDelete let-modal>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Delete Patient</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+        (click)="modal.close('Cerrado desde la ventana')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      You're going to delete a patient, are you sure?
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modal.close('No')">No</button>
+      <button type="button" class="btn btn-danger" (click)="modal.close('Si')">Yes</button>
+    </div>
+  </div>
+</ng-template>
+
+
+
+<ng-template #modalCreateEdit let-modal>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">{{textCreateUpdateModal}} Patient</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modal.close('0')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div *ngIf="!isCreated">
+      <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <!-- Image Preview -->
+        <img [src]="imageSrc" *ngIf="imageSrc" style="width: 30px; height: 30px; border-radius: 100%;">
+      </div>
+
+      <form [formGroup]="uploadPhotoForm" (ngSubmit)="uploadPhoto()" class="modal-body"
+        style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label for="uploadPhoto" class="col-2">Photo:</label>
+        <input class="form-control rounded-sm border-1 shadow-sm px-4" type="file" id="uploadPhoto" name="uploadPhoto"
+          (change)="onFileChange($event)">
+      </form>
+    </div>
+    <form [formGroup]="createPatientForm" (ngSubmit)="submitFormCreate()">
+
+      <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label for="nameCreate" class="col-2">Name:</label>
+        <input class="form-control rounded-sm border-1 shadow-sm px-4 text-dark" id="nameCreate" name="name" type="text"
+          formControlName='name' />
+      </div>
+
+      <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label for="surnameCreate" class="col-2">Surname:</label>
+        <input class="form-control rounded-sm border-1 shadow-sm px-4 text-dark" id="surnameCreate" name="surnameCreate"
+          type="text" formControlName='surname' />
+      </div>
+
+      <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label for="phoneCreate" class="col-2">Phone Number:</label>
+        <input class="form-control rounded-sm border-1 shadow-sm px-4 text-dark" id="phoneCreate" name="phoneCreate" type="text"
+          formControlName='phoneNumber' />
+      </div>
+
+      <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label for="emailCreate" class="col-2">Email:</label>
+        <input class="form-control rounded-sm border-1 shadow-sm px-4 text-dark" id="emailCreate" name="emailCreate" type="email"
+          placeholder="example: oneemail@gmail.com" formControlName='email' />
+      </div>
+
+      <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label for="dateOfBirthCreate" class="col-2">Date of Birth:</label>
+        <input type="date" class="form-control rounded-sm border-1 shadow-sm px-4 text-dark" id="dateOfBirthCreate"
+          name="dateOfBirthCreate" formControlName='dateOfBirth' />
+
+      </div>
+
+      <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label for="addressCreate" class="col-2">Home Address:</label>
+        <input class="form-control rounded-sm border-1 shadow-sm px-4 text-dark" id="addressCreate" name="addressCreate"
+          type="text" formControlName='homeAddress' />
+      </div>
+
+      <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label for="schoolCreate" class="col-2">School Name:</label>
+        <input class="form-control rounded-sm border-1 shadow-sm px-4 text-dark" id="schoolCreate" name="schoolCreate" type="text"
+          formControlName='schoolName' />
+      </div>
+
+      <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label for="nameCourse" class="col-2">Course:</label>
+        <input class="form-control rounded-sm border-1 shadow-sm px-4 text-dark" id="nameCourse" name="nameCourse" type="text"
+          formControlName='course' />
+      </div>
+
+      <div class="modal-body text-dark" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label for="paymentTypeCreate" class="col-2 text-dark">Payment Type:</label>
+        <select class="form-control text-dark" formControlName='paymentType'>
+          <option value="" class="text-dark" selected disabled hidden>Choose here</option>
+          <option value="Scholarship" class="text-dark">Scholarship</option>
+          <option value="Private medical mutual" class="text-dark">Private medical mutual</option>
+          <option value="Direct payment" class="text-dark">Direct payment</option>
+        </select>
+      </div>
+
+
+      <div class="modal-body text-dark" style="display:flex; flex-direction: row; justify-content: center; align-items: center"
+        *ngIf="roleUser === 1">
+        <label for="clinicIdCreate" class="col-2">Clinic: </label>
+        <select class="form-control text-dark" formControlName='clinicId'>
+          <option *ngFor="let clinic of clinics" [value]="clinic.id" class="text-dark">
+            {{clinic.name}}
+          </option>
+        </select>
+      </div>
+
+
+      <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label for="reasonCreate" class="col-2">Reason:</label>
+        <textarea class="form-control rounded-sm border-1 shadow-sm px-4 text-dark" id="reasonCreate" name="reasonCreate"
+          type="text" formControlName='reason' rows="6">
+          </textarea>
+      </div>
+
+
+    </form>
+
+    <div class="modal-footer" *ngIf="showButtonsForm">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modal.close('1')">Save</button>
+      <button type="button" class="btn btn-primary" (click)="modal.close('0')">Cancel</button>
+    </div>
+    <div class="modal-footer" *ngIf="!showButtonsForm && isCreated">
+      <span style="color: red;">All fields is required</span>
+    </div>
+
+  </div>
+</ng-template>

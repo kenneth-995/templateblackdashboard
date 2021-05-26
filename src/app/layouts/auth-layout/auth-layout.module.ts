@@ -12,6 +12,7 @@ import { RtlComponent } from '../../pages/rtl/rtl.component';
     CommonModule,
     RouterModule.forChild(AuthLayoutRoutes),
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     NgbModule
   ],

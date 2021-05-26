@@ -4,6 +4,8 @@ import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
+import { UserService } from 'src/app/services/user.service'
+
 @Component({
   selector: "app-navbar",
   templateUrl: "./navbar.component.html",
@@ -24,7 +26,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     location: Location,
     private element: ElementRef,
     private router: Router,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private userService: UserService
   ) {
     this.location = location;
     this.sidebarVisible = false;
@@ -53,6 +56,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.mobile_menu_visible = 0;
       }
     });
+  }
+
+  public logout() {
+    this.userService.logout()
   }
 
   collapse() {

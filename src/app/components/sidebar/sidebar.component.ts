@@ -17,20 +17,20 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: "/icons",
-    title: "Icons",
+    title: "Icons Patients",
     rtlTitle: "الرموز",
     icon: "icon-atom",
     class: ""
   },
   {
     path: "/maps",
-    title: "Maps",
+    title: "Maps Medical Sheet",
     rtlTitle: "خرائط",
     icon: "icon-pin",
     class: "" },
   {
     path: "/notifications",
-    title: "Notifications",
+    title: "Notifications Treatments",
     rtlTitle: "إخطارات",
     icon: "icon-bell-55",
     class: ""
@@ -45,25 +45,25 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: "/tables",
-    title: "Table List",
+    title: "Table List Reports",
     rtlTitle: "قائمة الجدول",
     icon: "icon-puzzle-10",
     class: ""
   },
   {
     path: "/typography",
-    title: "Typography",
+    title: "Typography Management",
     rtlTitle: "طباعة",
     icon: "icon-align-center",
     class: ""
-  },
+  }/* ,
   {
     path: "/rtl",
     title: "RTL Support",
     rtlTitle: "ار تي ال",
     icon: "icon-world",
     class: ""
-  }
+  } */
 ];
 
 @Component({
