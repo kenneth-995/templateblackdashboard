@@ -14,6 +14,9 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
+import { NgSelectModule } from '@ng-select/ng-select';
+import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight'; //npm i --save  @ng-select/ng-option-highlight
+
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
 import { LoginComponent } from './login/login.component';
@@ -28,7 +31,9 @@ import { LoginComponent } from './login/login.component';
     NgbModule,
     RouterModule,
     AppRoutingModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NgSelectModule,
+    NgOptionHighlightModule
   ],
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent],
   providers: [

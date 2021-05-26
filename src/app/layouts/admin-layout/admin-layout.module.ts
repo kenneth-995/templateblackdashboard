@@ -4,6 +4,12 @@ import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+
+import { NgSelectModule } from '@ng-select/ng-select';
+import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
+
 import { AdminLayoutRoutes } from "./admin-layout.routing";
 import { DashboardComponent } from "../../pages/dashboard/dashboard.component";
 import { IconsComponent } from "../../pages/icons/icons.component";
@@ -16,6 +22,12 @@ import { TypographyComponent } from "../../pages/typography/typography.component
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin
+]);
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -24,6 +36,9 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
+    FullCalendarModule,
+    NgSelectModule,
+    NgOptionHighlightModule
   ],
   declarations: [
     DashboardComponent,

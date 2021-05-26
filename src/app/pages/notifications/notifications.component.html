@@ -1,182 +1,233 @@
 <div class=" content">
   <div class=" row">
-    <div class=" col-md-6">
-      <div class=" card">
-        <div class=" card-header">
-          <h4 class=" card-title">Notifications Style</h4>
-        </div>
-        <div class=" card-body">
-          <ngb-alert [type]="'info'" [dismissible]="false">
-            <span> This is a plain notification </span>
-          </ngb-alert>
-          <ngb-alert [type]="'info'" *ngIf="!staticAlertClosed" [dismissible]="false">
-            <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close" (click)="staticAlertClosed = true">
-              <i class="tim-icons icon-simple-remove"></i>
-            </button>
-            <span> This is a notification with close button. </span>
-          </ngb-alert>
-          <ngb-alert
-            class=" alert-with-icon"
-            data-notify="container"
-            [type]="'info'"*ngIf="!staticAlertClosed1" [dismissible]="false">
-              <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close" (click)="staticAlertClosed1 = true">
-                <i class="tim-icons icon-simple-remove"></i>
-              </button>
-            <span class=" tim-icons icon-bell-55" data-notify="icon">
-            </span>
-            <span data-notify="message">
-              This is a notification with close button and icon.
-            </span>
-          </ngb-alert>
-          <ngb-alert
-            class=" alert-with-icon"
-            data-notify="container"
-            [type]="'info'"
-            *ngIf="!staticAlertClosed2" [dismissible]="false">
-              <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close" (click)="staticAlertClosed2 = true">
-                <i class="tim-icons icon-simple-remove"></i>
-              </button>
-            <span class=" tim-icons icon-bell-55" data-notify="icon">
-            </span>
-            <span data-notify="message">
-              This is a notification with close button and icon and have
-              many lines. You can see that the icon and the close button
-              are always vertically aligned. This is a beautiful
-              notification. So you don't have to worry about the style.
-            </span>
-          </ngb-alert>
-        </div>
-      </div>
-    </div>
-    <div class=" col-md-6">
-      <div class=" card">
-        <div class=" card-header">
-          <h4 class=" card-title">Notification states</h4>
-        </div>
-        <div class=" card-body">
-          <ngb-alert [type]="'primary'" *ngIf="!staticAlertClosed3" [dismissible]="false">
-            <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close" (click)="staticAlertClosed3 = true">
-              <i class="tim-icons icon-simple-remove"></i>
-            </button>
-            <span>
-              <b> Primary - </b> This is a regular notification made
-              with ".alert-primary"
-            </span>
-          </ngb-alert>
-          <ngb-alert [type]="'info'" *ngIf="!staticAlertClosed4" [dismissible]="false">
-            <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close" (click)="staticAlertClosed4 = true">
-              <i class="tim-icons icon-simple-remove"></i>
-            </button>
-            <span>
-              <b> Info - </b> This is a regular notification made with
-              ".alert-info"
-            </span>
-          </ngb-alert>
-          <ngb-alert [type]="'success'" *ngIf="!staticAlertClosed5" [dismissible]="false">
-            <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close" (click)="staticAlertClosed5 = true">
-              <i class="tim-icons icon-simple-remove"></i>
-            </button>
-            <span>
-              <b> Success - </b> This is a regular notification made
-              with ".alert-success"
-            </span>
-          </ngb-alert>
-          <ngb-alert [type]="'warning'" *ngIf="!staticAlertClosed6" [dismissible]="false">
-            <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close" (click)="staticAlertClosed6 = true">
-              <i class="tim-icons icon-simple-remove"></i>
-            </button>
-            <span>
-              <b> Warning - </b> This is a regular notification made
-              with ".alert-warning"
-            </span>
-          </ngb-alert>
-          <ngb-alert [type]="'danger'" *ngIf="!staticAlertClosed7" [dismissible]="false">
-            <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close" (click)="staticAlertClosed7 = true">
-              <i class="tim-icons icon-simple-remove"></i>
-            </button>
-            <span>
-              <b> Danger - </b> This is a regular notification made with
-              ".alert-danger"
-            </span>
-          </ngb-alert>
-        </div>
-      </div>
-    </div>
     <div class=" col-md-12">
       <div class=" card">
+        <div class=" card-header">
+          <h4 class=" card-title">Treatments Table</h4>
+        </div>
+
+        <!-- BOTTONS FILTERING AND SEARCHING -->
+        <div class="card-body">
+
+
+          <div class="">
+            <div class="row my-5 mx-1">
+              <button type="button" class="btn btn-primary" (click)='openModalCreate()'>Add Treatment &#43;</button>
+          </div>
+          <h4>Filters</h4>
+          <div class="row my-2 ">
+            
+            <div class="col-2 text-center">
+              Name Patient <input class="form-control" type="text" placeholder="find by name" #name
+                (keyup)="findByParams(name.value, minage.value, maxage.value, nameSpecialist.value, mindate.value, maxdate.value)">
+            </div>
+        
+            <div class="col-2 text-center">
+              Min age <input class="form-control" type="number" placeholder="find min age" #minage
+                (change)="findByParams(name.value, minage.value, maxage.value, nameSpecialist.value, mindate.value, maxdate.value)">
+            </div>
+        
+            <div class="col-2 text-center">
+              Max age <input class="form-control" type="number" placeholder="find max age" #maxage
+                (change)="findByParams(name.value, minage.value, maxage.value, nameSpecialist.value, mindate.value, maxdate.value)">
+            </div>
+        
+            <div class="col-2 text-center">
+              Name Specialist <input class="form-control" type="text" placeholder="find by name" #nameSpecialist
+                (keyup)="findByParams(name.value, minage.value, maxage.value, nameSpecialist.value, mindate.value, maxdate.value)">
+            </div>
+        
+            <div class="col-2 text-center">
+              Min date <input class="form-control" type="date" placeholder="find by name" #mindate
+                (change)="findByParams(name.value, minage.value, maxage.value, nameSpecialist.value, mindate.value, maxdate.value)">
+            </div>
+            <div class="col-2 text-center">
+              Max date <input class="form-control" type="date" placeholder="find by name" #maxdate
+                (change)="findByParams(name.value, minage.value, maxage.value, nameSpecialist.value, mindate.value, maxdate.value)">
+            </div>
+          </div>
+        
+          <h4>Ordering</h4>
+          <div class="row my-2">
+            <div class="col-2 text-center">
+              <button type="button" class="btn btn-primary my-3" style="font-size: 11px;" (click)='orderByPatientName("desc")'>
+                Name&nbsp; <i class="tim-icons icon-minimal-up"></i>
+              </button>
+            </div>
+            <div class="col-2 text-center">
+              <button type="button" class="btn btn-primary my-3" style="font-size: 11px;" (click)='orderByPatientName("asc")'>
+                Name &nbsp; <i class="tim-icons icon-minimal-down"></i>
+              </button>
+            </div>
+            <div class="col-2 text-center">
+              <button type="button" class="btn btn-primary my-3" style="font-size: 11px;" (click)='orderByPatientAge("desc")'>
+                Age&nbsp; <i class="tim-icons icon-minimal-up"></i>
+              </button>
+            </div>
+            <div class="col-2 text-center">
+              <button type="button" class="btn btn-primary my-3" style="font-size: 11px;" (click)='orderByPatientAge("asc")'>
+                Age &nbsp; <i class="tim-icons icon-minimal-down"></i>
+              </button>
+            </div>
+            <div class="col-2 text-center">
+              <button type="button" class="btn btn-primary my-3" style="font-size: 11px;" (click)='orderByDate("desc")'>
+                Date&nbsp; <i class="tim-icons icon-minimal-up"></i>
+              </button>
+            </div>
+            <div class="col-2 text-center">
+              <button type="button" class="btn btn-primary my-3" style="font-size: 11px;" (click)='orderByDate("asc")'>Date
+                &nbsp; <i class="tim-icons icon-minimal-down"></i>
+              </button>
+            </div>
+            
+
+          </div> 
+
+        </div>
+
+
+        <!-- TABLE DATA -->
         <div class=" card-body">
-          <div class=" places-buttons">
-            <div class=" row">
-              <div class=" col-md-6 ml-auto mr-auto text-center">
-                <h4 class=" card-title">Notifications Places</h4>
-                <p class=" category">Click to view notifications</p>
-              </div>
-            </div>
-            <div class=" row">
-              <div class=" col-lg-8 ml-auto mr-auto">
-                <div class=" row">
-                  <div class=" col-md-4">
-                    <button
-                      class=" btn btn-danger btn-block"
-                      (click)="showNotification('top', 'left')"
-                    >
-                      Top Left
-                    </button>
-                  </div>
-                  <div class=" col-md-4">
-                    <button
-                      class=" btn btn-danger btn-block"
-                      (click)="showNotification('top', 'center')"
-                    >
-                      Top Center
-                    </button>
-                  </div>
-                  <div class=" col-md-4">
-                    <button
-                      class=" btn btn-danger btn-block"
-                      (click)="showNotification('top', 'right')"
-                    >
-                      Top Right
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class=" row">
-              <div class=" col-lg-8 ml-auto mr-auto">
-                <div class=" row">
-                  <div class=" col-md-4">
-                    <button
-                      class=" btn btn-danger btn-block"
-                      (click)="showNotification('bottom', 'left')"
-                    >
-                      Bottom Left
-                    </button>
-                  </div>
-                  <div class=" col-md-4">
-                    <button
-                      class=" btn btn-danger btn-block"
-                      (click)="
-                        showNotification('bottom', 'center')
-                      "
-                    >
-                      Bottom Center
-                    </button>
-                  </div>
-                  <div class=" col-md-4">
-                    <button
-                      class=" btn btn-danger btn-block"
-                      (click)="showNotification('bottom', 'right')"
-                    >
-                      Bottom Right
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class=" table-responsive">
+              <table class="table table-striped">
+    <thead>
+      <tr class="text-center">
+        <th scope="col">#</th>
+        <th scope="col">Patient name</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">Sessions Finshed</th>
+        <th scope="col">Patient Age</th>
+        <th scope="col">Specialist name</th>
+        <th scope="col">Specialist type</th>
+        <th scope="col">Detail</th>
+        <th scope="col" *ngIf='roleUser ===1 || roleUser===2'>Action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let t of treatments let idx = index' scope="row" class="text-center">
+        <td>{{idx+1}}</td>
+        <td>{{t.patientFullName}}</td>
+        <td>{{t.startDate}}</td>
+        <td>{{t.sessionsFinished}}</td>
+        <td>{{t.patientAge}}</td>
+        <td>{{t.specialistFullName}}</td>
+        <td>{{t.specialistType}}</td>
+        <td><button class="btn btn-primary mb-2" (click)='openModalEdit(t, idx)'><i class="fas fa-pencil-alt"></i></button></td>
+        <td *ngIf='roleUser ===1 || roleUser===2'><button class="btn btn-danger"
+            (click)='openModalDelete(t, idx)'><i class="far fa-trash-alt"></i></button></td>
+      </tr>
+    </tbody>
+    <div class="text-center">
+      <p *ngIf="!isTreatments" style="color: blue;">Treatments not found</p>
+    </div>
+  </table>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 </div>
+
+
+
+<ng-template #modalDelete let-modal>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Delete Treatment</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+        (click)="modal.close('Cerrado desde la ventana')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      You're going to delete a treatment, are you sure?
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modal.close('0')">No</button>
+      <button type="button" class="btn btn-danger" (click)="modal.close('1')">Yes</button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #updateCreate let-modal>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">{{textModal}} Treatment</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+        (click)="modal.close('Cerrado desde la ventana')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+
+    </div>
+
+      <form [formGroup]="createUpdateForm" (ngSubmit)="createUpdateTreatment()">
+        
+          <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+            <label for="sessionsFinished" class="col-2">Sessions Finished:</label>
+            <input class="form-control rounded-sm border-1 shadow-sm px-4 text-dark" 
+                   id="sessionsFinished" 
+                   name="sessionsFinished"
+                   type="number"
+                   formControlName="sessionsFinished" />
+          </div>
+
+          <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+            <label for="startDate" class="col-2">Start Date:</label>
+            <input class="form-control rounded-sm border-1 shadow-sm px-4 text-dark" 
+                   id="startDate" 
+                   name="startDate"
+                   type="date"
+                   formControlName="startDate" />
+          </div>
+
+
+          <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+            <label for="active" class="col-2">Patient:</label>
+            <select class="form-control text-dark" formControlName="patientId">
+              <option *ngFor="let p of patients" [value]="p.id" class="text-dark">
+                  {{p.name + ' ' + p.surname}}
+              </option>
+            </select>
+          </div>
+
+          <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+            <label for="userId" class="col-2">Specialist:</label>
+            <select class="form-control text-dark" formControlName="userId" id="userId" name="userId" [disabled]="this.roleUser===3">
+              
+              <option *ngFor="let s of specialists" [value]="s.id" class="text-dark">
+                  {{s.name + ' ' + s.surnames}}
+              </option>
+            </select>
+          </div>
+
+          <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+            <label for="reasonTreatment" class="col-2">Reason Treatment:</label>
+            <textarea class="form-control rounded-sm border-1 shadow-sm px-4 text-dark" rows="6"
+                      type="text" 
+                      id="reasonTreatment" 
+                      name="reasonTreatment"
+                      formControlName="reason"
+                      placeholder="Reason of treatment is ...">
+            </textarea>
+          </div>
+
+
+      </form>
+
+    
+
+      <!-- TODO: ngIf not work -->
+    <div class="modal-footer" *ngIf="showButtonsForm">
+      <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="modal.close('1')">Save
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="modal.close('0')">Cancel
+      </button>
+    </div>
+
+  </div>
+
+<br>
+
+</ng-template>
