@@ -69,6 +69,14 @@ export const ROUTES: RouteInfo[] = [
     icon: "icon-align-center",
     class: "",
     role: 2
+  },
+  {
+    path: "/clinics",
+    title: "Management clinics",
+    rtlTitle: "طباعة",
+    icon: "icon-align-center",
+    class: "",
+    role: 2
   }
   
 ];
