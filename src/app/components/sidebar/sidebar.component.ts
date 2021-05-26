@@ -76,7 +76,7 @@ export const ROUTES: RouteInfo[] = [
     rtlTitle: "طباعة",
     icon: "icon-align-center",
     class: "",
-    role: 2
+    role: 1
   }
   
 ];

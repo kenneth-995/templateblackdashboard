@@ -131,8 +131,7 @@
                   <td>{{p.phoneNumber}}</td>
                   <td>{{p.email}}</td>
                   <td>{{p.age}}</td>
-                  <!-- <td><button class="btn btn-primary mb-2" (click)='editPatient(p, i)'>Edit</button></td> -->
-                  <td><button class="btn btn-primary mb-2" (click)='openModalEditPatient(p, i)'><i class="fas fa-pencil-alt"></i></button></td>
+                  <td><button class="btn btn-primary" (click)='openModalEditPatient(p, i)'><i class="fas fa-pencil-alt"></i></button></td>
                   <td *ngIf='roleUser ===1 || roleUser===2'><button class="btn btn-danger"
                       (click)='deletePatient(p.id, i)'><i class="far fa-trash-alt"></i></button></td>
                 </tr>
@@ -179,7 +178,7 @@
     <div *ngIf="!isCreated">
       <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
         <!-- Image Preview -->
-        <img [src]="imageSrc" *ngIf="imageSrc" style="width: 30px; height: 30px; border-radius: 100%;">
+        <img [src]="imageSrc" *ngIf="imageSrc" style="width: 150px; height: 150px; border-radius: 100%;">
       </div>
 
       <form [formGroup]="uploadPhotoForm" (ngSubmit)="uploadPhoto()" class="modal-body"

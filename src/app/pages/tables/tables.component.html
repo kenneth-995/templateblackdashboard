@@ -104,7 +104,7 @@
                   <td>{{r.specialistFullName}}</td>
                   <td>{{r.specialistType}}</td>
           
-                  <td><button class="btn btn-primary mb-2" (click)='openModalEdit(r, idx)'><i class="fas fa-pencil-alt"></i>&nbsp;<i class="far fa-eye"></i></button></td>
+                  <td><button class="btn btn-primary" (click)='openModalEdit(r, idx)'><i class="fas fa-pencil-alt"></i>&nbsp;<i class="far fa-eye"></i></button></td>
                   <td *ngIf='roleUser ===1 || roleUser===2'><button class="btn btn-danger"
                       (click)='openModalDelete(r.id, idx)'><i class="far fa-trash-alt"></i></button></td>
                 </tr>
