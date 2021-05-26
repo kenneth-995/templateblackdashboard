@@ -1,166 +1,290 @@
-
 <div class=" content">
   <div class=" row">
     <div class=" col-md-12">
       <div class=" card">
-        <div class=" card-header mb-5">
-          <h5 class=" card-category">Black Table Heading</h5>
-          <h3 class=" card-title">Created using Poppins Font Family</h3>
+        <div class=" card-header">
+          <h4 class=" card-title">Patients Table</h4>
         </div>
-        <div class=" card-body">
-          <div class=" typography-line">
-            <h1><span> Header 1 </span> The Life of Black Dashboard</h1>
-          </div>
-          <div class=" typography-line">
-            <h2><span> Header 2 </span> The Life of Black Dashboard</h2>
-          </div>
-          <div class=" typography-line">
-            <h3><span> Header 3 </span> The Life of Black Dashboard</h3>
-          </div>
-          <div class=" typography-line">
-            <h4><span> Header 4 </span> The Life of Black Dashboard</h4>
-          </div>
-          <div class=" typography-line">
-            <h5><span> Header 5 </span> The Life of Black Dashboard</h5>
-          </div>
-          <div class=" typography-line">
-            <h6><span> Header 6 </span> The Life of Black Dashboard</h6>
-          </div>
-          <div class=" typography-line">
-            <p>
-              <span> Paragraph </span> I will be the leader of a company that
-              ends up being worth billions of dollars, because I got the
-              answers. I understand culture. I am the nucleus. I think thatâs a
-              responsibility that I have, to push possibilities, to show people,
-              this is the level that things could be at.
-            </p>
-          </div>
-          <div class=" typography-line">
-            <span> Quote </span>
-            <blockquote>
-              <p class=" blockquote blockquote-danger">
-                "I will be the leader of a company that ends up being worth
-                billions of dollars, because I got the answers. I understand
-                culture. I am the nucleus. I think that's a responsibility that
-                I have, to push possibilities, to show people, this is the level
-                that things could be at." <br />
+        <div class="card-body">
 
-                <br />
+          <div class="">
 
-                <small> - Noaa </small>
-              </p>
-            </blockquote>
-          </div>
-          <div class=" typography-line">
-            <span> Muted Text </span>
-            <p class=" text-muted">
-              I will be the leader of a company that ends up being worth
-              billions of dollars, because I got the answers...
-            </p>
-          </div>
-          <div class=" typography-line">
-            <span> Primary Text </span>
-            <p class=" text-primary">
-              I will be the leader of a company that ends up being worth
-              billions of dollars, because I got the answers...
-            </p>
-          </div>
-          <div class=" typography-line">
-            <span> Info Text </span>
-            <p class=" text-info">
-              I will be the leader of a company that ends up being worth
-              billions of dollars, because I got the answers...
-            </p>
-          </div>
-          <div class=" typography-line">
-            <span> Success Text </span>
-            <p class=" text-success">
-              I will be the leader of a company that ends up being worth
-              billions of dollars, because I got the answers...
-            </p>
-          </div>
-          <div class=" typography-line">
-            <span> Warning Text </span>
-            <p class=" text-warning">
-              I will be the leader of a company that ends up being worth
-              billions of dollars, because I got the answers...
-            </p>
-          </div>
-          <div class=" typography-line">
-            <span> Danger Text </span>
-            <p class=" text-danger">
-              I will be the leader of a company that ends up being worth
-              billions of dollars, because I got the answers...
-            </p>
-          </div>
-          <div class=" typography-line">
-            <h2>
-              <span> Small Tag </span> Header with small subtitle <br />
 
-              <small> Use "small" tag for the headers </small>
-            </h2>
-          </div>
-          <div class=" typography-line">
-            <span> Lists </span>
-            <div class=" row">
-              <div class=" col-md-3">
-                <h5>Unordered List</h5>
-                <ul>
-                  <li>List Item</li>
-                  <li>List Item</li>
-                  <li class=" list-unstyled">
-                    <ul>
-                      <li>List Item</li>
-                      <li>List Item</li>
-                      <li>List Item</li>
-                    </ul>
-                  </li>
-                  <li>List Item</li>
-                </ul>
-              </div>
-              <div class=" col-md-3">
-                <h5>Ordered List</h5>
-                <ol>
-                  <li>List Item</li>
-                  <li>List Item</li>
-                  <li>List item</li>
-                  <li>List Item</li>
-                </ol>
-              </div>
-              <div class=" col-md-3">
-                <h5>Unstyled List</h5>
-                <ul class=" list-unstyled">
-                  <li>List Item</li>
-                  <li>List Item</li>
-                  <li>List item</li>
-                  <li>List Item</li>
-                </ul>
-              </div>
-              <div class=" col-md-3">
-                <h5>Inline List</h5>
-                <ul class=" list-inline">
-                  <li class=" list-inline-item">List1</li>
-                  <li class=" list-inline-item">List2</li>
-                  <li class=" list-inline-item">List3</li>
-                </ul>
-              </div>
+
+
+
+            <div class="row my-5 mx-1">
+              <button type="button" class="btn btn-primary" (click)='openModalCreateNewSpecialist()'> Add Specialist &#43;</button>
             </div>
-          </div>
-          <div class=" typography-line">
-            <span> Code </span>
-            <p>
-              This is <code> .css-class-as-code </code> , an example of an
-              inline code element. Wrap inline code within a
-              <code> <code>...</code> </code> tag.
-            </p>
-            <pre>
-1. #This is an example of preformatted text.<br>
 
-2. #Here is another line of code
-</pre>
+            <!-- <h4>Filters</h4>
+            <div class="row my-2 ">
+
+              <div class="col-2 text-center">
+                Name <input class="form-control" type="text" placeholder="find by name" #name
+                  (keyup)="findByParams(name.value, minage.value, maxage.value)">
+              </div>
+
+              <div class="col-2 text-center">
+                Min age <input class="form-control" type="number" placeholder="find min age" #minage
+                  (change)="findByParams(name.value, minage.value, maxage.value)">
+              </div>
+
+              <div class="col-2 text-center">
+                Max age <input class="form-control text-white" type="number" placeholder="find max age" #maxage
+                  (change)="findByParams(name.value, minage.value, maxage.value)">
+              </div>
+
+              <div class="col-2 text-center" *ngIf="roleUser === 1">
+                Patients treated for
+                <select class="form-control text-white" [(ngModel)]="specialistIdParamSearch"
+                  (change)="findByParams(name.value, minage.value, maxage.value)">
+                  <option value="0" class="text-dark">All specialists</option>
+                  <option *ngFor="let s of specialists" [value]="s.id" class="text-dark">{{s.name + ' ' + s.surnames}}
+                  </option>
+                </select>
+              </div>
+
+
+              <div class="col-2 text-center" *ngIf="roleUser === 1">
+                Clinic
+                <select class="form-control text-white" [(ngModel)]="clinicIdParamSearch"
+                  (change)="findByParams(name.value, minage.value, maxage.value)">
+                  <option value="0" class="text-dark">All clinics</option>
+                  <option *ngFor="let c of clinics" [value]="c.id" class="text-dark">{{c.name}}</option>
+                </select>
+              </div>
+
+            </div>
+
+            <h4>Ordering</h4>
+            <div class="row my-2">
+              <div class="col-2 ">
+                <button type="button" class="btn btn-primary my-3" style="font-size: 11px;"
+                  (click)='orderByPatientName("desc")'>
+                  Name&nbsp; <i class="tim-icons icon-minimal-up"></i>
+                </button>
+              </div>
+              <div class="col-2 ">
+                <button type="button" class="btn btn-primary my-3" style="font-size: 11px;"
+                  (click)='orderByPatientName("asc")'>
+                  Name&nbsp; <i class="tim-icons icon-minimal-down"></i>
+
+                </button>
+              </div>
+              <div class="col-2 ">
+                <button type="button" class="btn btn-primary my-3" style="font-size: 11px;"
+                  (click)='orderByPatientAge("desc")'>
+                  Age&nbsp; <i class="tim-icons icon-minimal-up"></i>
+                </button>
+              </div>
+              <div class="col-2 ">
+                <button type="button" class="btn btn-primary my-3" style="font-size: 11px;"
+                  (click)='orderByPatientAge("asc")'>
+                  Age&nbsp; <i class="tim-icons icon-minimal-down"></i>
+                </button>
+              </div>
+
+
+            </div> -->
+
+
+
+          </div>
+
+
+
+        </div>
+
+
+        <div class=" card-body">
+          <div class=" table-responsive">
+            <table class=" table tablesorter" id="">
+              <thead class=" text-primary">
+                <tr>
+                  <th scope="col" class="text-center">#</th>
+                  <th scope="col" class="text-center">Photo</th>
+                  <th scope="col" class="text-center">Username</th>
+                  <th scope="col" class="text-center">Full name</th>
+                  <th scope="col" class="text-center">Email</th>
+                  <th scope="col" class="text-center">Telephone</th>
+                  <th scope="col" class="text-center">Role</th>
+                  <th scope="col" class="text-center">Clinic</th>
+                  <th scope="col" class="text-center">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor='let s of specialists let i = index' scope="row" class="text-center">
+                
+                  <td>{{i+1}}</td>
+                  <td><img [src]="s.photoUrl" [alt]="s.name" style="width: 30px; height: 30px; border-radius: 100%;"></td>
+                  <td>{{s.username}}</td>
+                  <td>{{s.name + ' ' + s.surnames}}</td>
+  
+                  <td>{{s.email}}</td>
+                  <td>{{s.phone}}</td>
+                  <td>
+                      {{s.roles}}
+                  </td>
+                  <td>{{s.clinicId}}</td>
+                  <td><button class="btn btn-danger" (click)='openModalDeleteSpecialist(s.id, i)'
+                          [disabled]="userLogged.id === s.id"><i class="far fa-trash-alt"></i></button></td>
+                      
+              </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 </div>
+
+<ng-template #modalDelete let-modal>
+  <div class="modal-content">
+      <div class="modal-header">
+          <h5 class="modal-title">Delete Specialist</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+              (click)="modal.close('Cerrado desde la ventana')">
+              <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
+          You're going to delete a specialist, are you sure?
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modal.close('0')">No</button>
+          <button type="button" class="btn btn-danger" (click)="modal.close('1')" disabled="true">Yes</button>
+      </div>
+  </div>
+</ng-template>
+
+
+
+<ng-template #modalCreate let-modal>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Create Specialist</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+        (click)="modal.close('0')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+
+    <form [formGroup]="createSpecialistForm" (ngSubmit)="submitFormCreate()">
+
+      <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label for="usernameCreate" class="col-2">Username:</label>
+        <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark" 
+              id="usernameCreate" 
+              name="usernameCreate"
+              type="text"
+              formControlName='username' />
+      </div>
+      
+      <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label for="emailCreate" class="col-2">email:</label>
+        <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark" 
+              id="emailCreate" 
+              name="emailCreate"
+              type="text"
+              formControlName='email' />
+      </div>
+      <div *ngIf="msgEmail" class="text-center" style="color: red;">
+          <span  >{{msgEmail}}</span>
+      </div>
+      
+
+      <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label for="passwordCreate" class="col-2">Password:</label>
+        <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark" 
+              id="passwordCreate" 
+              name="passwordCreate"
+              type="password"
+              formControlName='password' />
+
+      </div>
+      <div *ngIf="msgPsswd" class="text-center" style="color: red;">
+          <span  >{{msgPsswd}}</span>
+      </div>
+
+      <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label for="password2Create" class="col-2">Repeat password:</label>
+        <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark" 
+              id="password2Create" 
+              name="password2Create"
+              type="password"
+              formControlName='password2' />
+      </div>
+
+      <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label for="nameCreate" class="col-2">Name:</label>
+        <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark" 
+              id="nameCreate" 
+              name="nameCreate"
+              type="text"
+              formControlName='name' />
+      </div>
+
+      <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label for="surnamesCreate" class="col-2">Surnames:</label>
+        <input type="text" class="form-control rounded-sm border-0 shadow-sm px-4 text-dark"
+              id="surnamesCreate" 
+              name="surnamesCreate"
+              formControlName='surnames'/>
+
+      </div>
+
+      <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label for="phoneCreate" class="col-2">Phone:</label>
+        <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark" 
+              id="phoneCreate" 
+              name="phoneCreate"
+              type="text"
+              formControlName='phone' />
+      </div>
+
+      <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label for="collegiateNumberCreate" class="col-2">Collegiate Number:</label>
+        <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark"
+              id="collegiateNumberCreate" 
+              name="collegiateNumberCreate"
+              type="text"
+              formControlName='collegiateNumber' />
+      </div>
+
+      <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label for="specialistTypeCreate" class="col-2">Specialist Type:</label>
+        <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark"
+              id="specialistTypeCreate" 
+              name="specialistTypeCreate"
+              type="text"
+              formControlName='specialistType' 
+              placeholder="example: Psychologist, Speech therapist ..."/>
+      </div>
+  
+
+      <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center"
+          *ngIf="roleUser === 1">
+        <label for="clinicIdCreate" class="col-2">Clinic: </label>
+        <select class="form-control text-dark" formControlName='clinicId'>
+          <option *ngFor="let clinic of clinics" [value]="clinic.id" class="text-dark">
+              {{clinic.name}}
+          </option>
+        </select>
+      </div>
+
+    </form>
+
+    <div class="modal-footer" *ngIf="showButtonsForm">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modal.close('1')">Save</button>
+      <button type="button" class="btn btn-primary" (click)="modal.close('0')">Cancel</button>
+    </div>
+    <div class="modal-footer" *ngIf="!showButtonsForm">
+      <span style="color: red;">{{messageForm}}</span>
+    </div>
+
+  </div>
+</ng-template>

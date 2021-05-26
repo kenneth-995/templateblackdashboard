@@ -32,26 +32,26 @@
             </div>
         
             <div class="col-2 text-center">
-              Max age <input class="form-control" type="number" placeholder="find max age" #maxage
+              Max age <input class="form-control text-white" type="number" placeholder="find max age" #maxage
                 (change)="findByParams(name.value, minage.value, maxage.value)">
             </div>
         
             <div class="col-2 text-center" *ngIf="roleUser === 1">
               Patients treated for
-              <select class="form-control" [(ngModel)]="specialistIdParamSearch"
+              <select class="form-control text-white" [(ngModel)]="specialistIdParamSearch"
                 (change)="findByParams(name.value, minage.value, maxage.value)">
-                <option value="0">All specialists</option>
-                <option *ngFor="let s of specialists" [value]="s.id">{{s.name + ' ' + s.surnames}}</option>
+                <option value="0" class="text-dark">All specialists</option>
+                <option *ngFor="let s of specialists" [value]="s.id" class="text-dark">{{s.name + ' ' + s.surnames}}</option>
               </select>
             </div>
         
         
             <div class="col-2 text-center" *ngIf="roleUser === 1">
               Clinic
-              <select class="form-control" [(ngModel)]="clinicIdParamSearch"
+              <select class="form-control text-white" [(ngModel)]="clinicIdParamSearch"
                 (change)="findByParams(name.value, minage.value, maxage.value)">
-                <option value="0">All clinics</option>
-                <option *ngFor="let c of clinics" [value]="c.id">{{c.name}}</option>
+                <option value="0" class="text-dark">All clinics</option>
+                <option *ngFor="let c of clinics" [value]="c.id" class="text-dark">{{c.name}}</option>
               </select>
             </div>
         

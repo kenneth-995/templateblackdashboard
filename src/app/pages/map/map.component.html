@@ -13,124 +13,10 @@
             <div class="col-10 shadow p-0 rounded bg-white">
                 <full-calendar #calendar [options]="calendarOptions"></full-calendar>
             </div>
-        </div>
-
-          <!-- <div class="">
-
-            <div class="row my-5 mx-1">
-              <button type="button" class="btn btn-primary" (click)='openModalCreatePatientNew()'> Add Patient
-                &#43;</button>
-            </div>
-
-            <h4>Filters</h4>
-            <div class="row my-2 ">
-
-              <div class="col-2 text-center">
-                Name <input class="form-control" type="text" placeholder="find by name" #name
-                  (keyup)="findByParams(name.value, minage.value, maxage.value)">
-              </div>
-
-              <div class="col-2 text-center">
-                Min age <input class="form-control" type="number" placeholder="find min age" #minage
-                  (change)="findByParams(name.value, minage.value, maxage.value)">
-              </div>
-
-              <div class="col-2 text-center">
-                Max age <input class="form-control" type="number" placeholder="find max age" #maxage
-                  (change)="findByParams(name.value, minage.value, maxage.value)">
-              </div>
-
-              <div class="col-2 text-center" *ngIf="roleUser === 1">
-                Patients treated for
-                <select class="form-control" [(ngModel)]="specialistIdParamSearch"
-                  (change)="findByParams(name.value, minage.value, maxage.value)">
-                  <option value="0">All specialists</option>
-                  <option *ngFor="let s of specialists" [value]="s.id">{{s.name + ' ' + s.surnames}}</option>
-                </select>
-              </div>
-
-
-              <div class="col-2 text-center" *ngIf="roleUser === 1">
-                Clinic
-                <select class="form-control" [(ngModel)]="clinicIdParamSearch"
-                  (change)="findByParams(name.value, minage.value, maxage.value)">
-                  <option value="0">All clinics</option>
-                  <option *ngFor="let c of clinics" [value]="c.id">{{c.name}}</option>
-                </select>
-              </div>
-
-            </div>
-
-            <h4>Ordering</h4>
-            <div class="row my-2">
-              <div class="col-2 ">
-                <button type="button" class="btn btn-primary my-3" style="font-size: 11px;"
-                  (click)='orderByPatientName("desc")'>
-                  Name <i class="fas fa-sort-amount-up"></i>
-                </button>
-              </div>
-              <div class="col-2 ">
-                <button type="button" class="btn btn-primary my-3" style="font-size: 11px;"
-                  (click)='orderByPatientName("asc")'>
-                  Name <i class="tim-icons icon-minimal-down"></i>
-
-                </button>
-              </div>
-              <div class="col-2 ">
-                <button type="button" class="btn btn-primary my-3" style="font-size: 11px;"
-                  (click)='orderByPatientAge("desc")'>
-                  Age <i class="fas fa-sort-amount-up"></i>
-                </button>
-              </div>
-              <div class="col-2 ">
-                <button type="button" class="btn btn-primary my-3" style="font-size: 11px;"
-                  (click)='orderByPatientAge("asc")'>
-                  Age <i class="tim-icons icon-minimal-down"></i>
-                </button>
-              </div>
-
-
-            </div>
-
-          </div> -->
-
-        </div>
-
-
-        <!-- TABLE DATA -->
-        <!-- <div class=" card-body">
-          <div class=" table-responsive">
-            <table class=" table tablesorter" id="">
-              <thead class=" text-primary">
-                <tr>
-                  <th scope="col" class="text-center">#</th>
-                  <th scope="col" class="text-center">Photo</th>
-                  <th scope="col" class="text-center">Fullname</th>
-                  <th scope="col" class="text-center">Telephone</th>
-                  <th scope="col" class="text-center">email</th>
-                  <th scope="col" class="text-center">Age</th>
-                  <th scope="col" class="text-center">Action</th>
-                  <th scope="col" class="text-center" *ngIf='roleUser ===1 || roleUser===2'>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor='let p of patients let i = index' scope="row" class="text-center">
-                  <td>{{i+1}}</td>
-                  <td><img [src]="p.urlPhoto" style="width: 30px; height: 30px; border-radius: 100%;" [alt]="p.name">
-                  </td>
-                  <td>{{p.name + ' ' + p.surname}}</td>
-                  <td>{{p.phoneNumber}}</td>
-                  <td>{{p.email}}</td>
-                  <td>{{p.age}}</td>
-                  <td><button class="btn btn-primary mb-2" (click)='openModalEditPatient(p, i)'><i
-                        class="fas fa-pencil-alt"></i></button></td>
-                  <td *ngIf='roleUser ===1 || roleUser===2'><button class="btn btn-danger"
-                      (click)='deletePatient(p.id, i)'><i class="far fa-trash-alt"></i></button></td>
-                </tr>
-              </tbody>
-            </table>
           </div>
-        </div> -->
+
+        </div>
+
       </div>
     </div>
 
@@ -188,7 +74,7 @@
               <label for="clinicIdCreate" class="col-2">Specialist: </label>
               <select class="form-control text-dark" formControlName='specialistId'>
                   <option *ngFor="let s of specialists" [value]="s.id" class="text-dark">
-                      {{s.name}}
+                      {{s.name + ' ' + s.surnames}}
                   </option>
               </select>
           </div>
