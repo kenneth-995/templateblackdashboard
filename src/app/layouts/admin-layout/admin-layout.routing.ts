@@ -10,6 +10,7 @@ import { UserComponent } from "../../pages/user/user.component";
 import { TablesComponent } from "../../pages/tables/tables.component";
 import { TypographyComponent } from "../../pages/typography/typography.component";
 import { ClinicsComponent } from "src/app/pages/clinics/clinics.component";
+import { ClinicComponent } from 'src/app/pages/clinic/clinic.component';
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 
 export const AdminLayoutRoutes: Routes = [
@@ -21,5 +22,6 @@ export const AdminLayoutRoutes: Routes = [
   { path: "tables", component: TablesComponent, canActivate: [AuthGuard] },
   { path: "typography", component: TypographyComponent, canActivate: [AuthGuard] },
   { path: "clinics", component: ClinicsComponent, canActivate: [AuthGuard] },
+  { path: "clinic", component: ClinicComponent, canActivate: [AuthGuard] }, 
   // { path: "rtl", component: RtlComponent, canActivate: [AuthGuard] }
 ];
