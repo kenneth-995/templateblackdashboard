@@ -225,7 +225,7 @@ export class TypographyComponent implements OnInit {
     private registerSpecialist() {
       this.userService.createSpecialist(this.createSpecialistForm.value).pipe(takeUntil(this.destroy$)).subscribe(
         (res:User) => {
-          //this.specialists.push(this.createSpecialistForm.value) //not activate!
+          this.specialists.push(this.createSpecialistForm.value) //not activate!
           console.log(res)
           this.toast.success('Registered user, it will be necessary for the user to confirm the email', 'Successfully')
         }, 
