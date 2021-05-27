@@ -1,186 +1,219 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">My profile</h5>
+        </div>
 
-<div class=" content">
-  <div class=" row">
-    <div class=" col-md-8">
-      <div class=" card">
-        <div class=" card-header"><h5 class=" title">Edit Profile</h5></div>
-        <div class=" card-body">
-          <form>
-            <div class=" row">
-              <div class=" col-md-5 pr-md-1">
-                <div class=" form-group">
-                  <label> Company (disabled) </label>
-                  <input
-                    class=" form-control"
-                    disabled=""
-                    placeholder="Company"
-                    type="text"
-                    value="Creative Code Inc."
-                  />
-                </div>
-              </div>
-              <div class=" col-md-3 px-md-1">
-                <div class=" form-group">
-                  <label> Username </label>
-                  <input
-                    class=" form-control"
-                    placeholder="Username"
-                    type="text"
-                    value="michael23"
-                  />
-                </div>
-              </div>
-              <div class=" col-md-4 pl-md-1">
-                <div class=" form-group">
-                  <label for="exampleInputEmail1"> Email address </label>
-                  <input
-                    class=" form-control"
-                    placeholder="mike@email.com"
-                    type="email"
-                  />
+        <div class="card-body">
+
+
+
+
+          <form class="form" [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+
+
+
+            <div class="row">
+              <div class="col-md-8 pr-md-1">
+                <div class="form-group">
+                  <label for="nameCreate">Email</label>
+                  <input type="text" class="form-control" name="email" id="email" [value]="userLogged.email"
+                    [disabled]="disablefInput">
                 </div>
               </div>
             </div>
-            <div class=" row">
-              <div class=" col-md-6 pr-md-1">
-                <div class=" form-group">
-                  <label> First Name </label>
-                  <input
-                    class=" form-control"
-                    placeholder="Company"
-                    type="text"
-                    value="Mike"
-                  />
+
+            <div class="row">
+              <div class="col-md-6 pr-md-1">
+                <div class="form-group">
+                  <label for="name"> Name </label>
+                  <input class="form-control" placeholder="Address" type="text" formControlName='name' name="name"
+                    id="name" />
                 </div>
               </div>
-              <div class=" col-md-6 pl-md-1">
-                <div class=" form-group">
-                  <label> Last Name </label>
-                  <input
-                    class=" form-control"
-                    placeholder="Last Name"
-                    type="text"
-                    value="Andrew"
-                  />
+              <div class="col-md-6 pl-md-1">
+                <div class="form-group">
+                  <label for="surname">Surnames </label>
+                  <input class="form-control" placeholder="Last Name" type="text" formControlName="surnames"
+                    name="surname" id="surname" />
                 </div>
               </div>
             </div>
-            <div class=" row">
-              <div class=" col-md-12">
-                <div class=" form-group">
-                  <label> Address </label>
-                  <input
-                    class=" form-control"
-                    placeholder="Home Address"
-                    type="text"
-                    value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
-                  />
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="phone"> Phone </label>
+                  <input class="form-control" placeholder="Hphone number" type="text" formControlName="phone" name="phone" id="phone" />
                 </div>
               </div>
             </div>
-            <div class=" row">
-              <div class=" col-md-4 pr-md-1">
-                <div class=" form-group">
-                  <label> City </label>
-                  <input
-                    class=" form-control"
-                    placeholder="City"
-                    type="text"
-                    value="Mike"
-                  />
+
+            <div class="row">
+              <div class="col-md-6 pl-md-1">
+                <div class="form-group" *ngIf="roleUser != 1">
+                  <label for="specialistType"> Specialist Type </label>
+                  <input class="form-control" placeholder="Specialist type" type="text" formControlName="specialistType" name="specialistType" id="specialistType" />
                 </div>
-              </div>
-              <div class=" col-md-4 px-md-1">
-                <div class=" form-group">
-                  <label> Country </label>
-                  <input
-                    class=" form-control"
-                    placeholder="Country"
-                    type="text"
-                    value="Andrew"
-                  />
-                </div>
-              </div>
-              <div class=" col-md-4 pl-md-1">
-                <div class=" form-group">
-                  <label> Postal Code </label>
-                  <input
-                    class=" form-control"
-                    placeholder="ZIP Code"
-                    type="number"
-                  />
+                <div class="col-md-6 pl-md-1">
+                  <div class="form-group" *ngIf="roleUser != 1">
+                    <label for="collegiateNumber"> Colegiate Number </label>
+                    <input class="form-control" placeholder="Colegiate number" type="text" formControlName="collegiateNumber" name="collegiateNumber" id="collegiateNumber" />
+                  </div>
                 </div>
               </div>
             </div>
-            <div class=" row">
-              <div class=" col-md-8">
-                <div class=" form-group">
-                  <label> About Me </label>
-                  <textarea
-                    class=" form-control"
-                    cols="80"
-                    placeholder="Here can be your description"
-                    rows="4"
-                    value="Mike"
-                  >
-Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.
-</textarea
-                  >
+
+            <div class="row">
+
+              <div class="col-md-6 pl-md-1">
+                <div class="form-group" *ngIf="roleUser == 2">
+                  <label for="isAdminRole">Role admin </label>
+                  <input class="form-control" type="checkbox" name="isAdminRole" id="isAdminRole"
+                    formControlName="isAdminRole">
                 </div>
               </div>
             </div>
+
+            <div class="row">
+              <div class="col-md-6 pl-md-1">
+                <div class="form-group" *ngIf="roleUser != 1">
+                  <label for="address"> Uncheck and save to delete your account </label>
+                  <input class="form-control" type="checkbox" formControlName="active" name="active" id="active">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 pr-md-1">
+                <div class="form-group">
+
+                </div>
+              </div>
+
+            </div>
+
+
+
           </form>
+
         </div>
-        <div class=" card-footer">
-          <button class=" btn btn-fill btn-danger" type="submit">Save</button>
+
+        <div class="modal-footer">
+          <button class="btn btn-block btn-success py-2" *ngIf="changeProfileForm" style="font-size : 20px;"
+            (click)="saveProfile()">Save</button>
+          <button class="btn btn-block btn-warning py-2" style="font-size : 20px;" (click)="setFormProfileValues()"
+            *ngIf="changeProfileForm">Discart changes</button>
         </div>
+
+
       </div>
     </div>
-    <div class=" col-md-4">
-      <div class=" card card-user">
-        <div class=" card-body">
-          <p class=" card-text"></p>
-          <div class=" author">
-            <div class=" block block-one"></div>
-            <div class=" block block-two"></div>
-            <div class=" block block-three"></div>
-            <div class=" block block-four"></div>
-            <a href="javascript:void(0)">
-              <img alt="..." class=" avatar" src="assets/img/emilyz.jpg" />
+    <div class="col-md-4">
+      <div class="card card-user">
+        <div class="card-body">
+          <p class="card-text"></p>
+          <div class="author">
+            <div class="block block-one"></div>
+            <div class="block block-two"></div>
+            <div class="block block-three"></div>
+            <div class="block block-four"></div>
 
-              <h5 class=" title">Mike Andrew</h5>
-            </a>
-            <p class=" description">Ceo/Co-Founder</p>
+            <img [src]="userLogged.photoUrl" *ngIf="!previewImageStr" class="avatar" alt="avatar">
+
+            <img [src]="previewImageStr" *ngIf="previewImageStr" class="avatar" [alt]="userLogged.name">
+
+
+
           </div>
-          <div class=" card-description">
-            Do not be scared of the truth because we need to restart the human
-            foundation in truth And I love you like Kanye loves Kanye I love
-            Rick Owens’ bed design but the back is...
-          </div>
-        </div>
-        <div class=" card-footer">
-          <div class=" button-container">
-            <button
-              class=" btn btn-icon btn-round btn-facebook"
-              href="javascript:void(0)"
-            >
-              <i class=" fab fa-facebook"> </i>
-            </button>
-            <button
-              class=" btn btn-icon btn-round btn-twitter"
-              href="javascript:void(0)"
-            >
-              <i class=" fab fa-twitter"> </i>
-            </button>
-            <button
-              class=" btn btn-icon btn-round btn-google"
-              href="javascript:void(0)"
-            >
-              <i class=" fab fa-google-plus"> </i>
-            </button>
+          <div class="card-description">
+            <form [formGroup]="fileForm">
+              <label for="uploadPhoto" class="btn btn-primary btn-block mt-3" style="font-size : 20px;">Change
+                Image</label>
+              <input class="form-control rounded-sm border-0 shadow-sm px-4" type="file" id="uploadPhoto"
+                name="uploadPhoto" (change)="onFileChange($event)" style="visibility:hidden;"
+                accept="image/png, image/gif, image/jpeg"><br>
+              <!-- <input class="form-control rounded-sm border-0 shadow-sm px-4" type="file" id="uploadPhoto"
+                        name="uploadPhoto" (change)="onFileChange($event)"> -->
+            </form>
+
+            <button class="btn btn-block btn-success py-2" style="font-size : 20px;"
+              (click)="openModalPassword()">Change Password</button>
           </div>
         </div>
+        <!-- <div class="card-footer">
+                <div class="button-container">
+                    <button class="btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
+                        <i class="fab fa-facebook"> </i>
+                    </button>
+                    <button class="btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
+                        <i class="fab fa-twitter"> </i>
+                    </button>
+                    <button class="btn btn-icon btn-round btn-google" href="javascript:void(0)">
+                        <i class="fab fa-google-plus"> </i>
+                    </button>
+                </div>
+            </div> -->
       </div>
     </div>
   </div>
 </div>
+
+
+<ng-template #modalDeactivate let-modal>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Delete Acount</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+        (click)="modal.close('Cerrado desde la ventana')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      If you deactivate your account, you will not be able to log in again, are you sure?
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modal.close('0')">No</button>
+      <button type="button" class="btn btn-primary" (click)="modal.close('1')">Si</button>
+    </div>
+  </div>
+</ng-template>
+
+
+<ng-template #updatePassword let-modal>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Change Your Password</h5>
+
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+        (click)="modal.close('Cerrado desde la ventana')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-header">The password must contain at least 6 characters for security reasons</div>
+
+    <form [formGroup]="updatePasswordForm" class="modal-body">
+      <label for="oldPassword" class="col-6"><strong>Your password</strong></label>
+      <input class="form-control rounded-sm border-0 shadow-sm px-4" type="text" id="oldPassword" name="oldPassword"
+        formControlName="oldPassword"><br>
+
+      <label for="newPassword" class="col-6"><strong>Your new password</strong></label>
+      <input class="form-control rounded-sm border-0 shadow-sm px-4" type="text" id="newPassword" name="newPassword"
+        formControlName="newPassword"><br>
+
+      <label for="newPassword2" class="col-6"><strong>Repeat new password</strong></label>
+      <input class="form-control rounded-sm border-0 shadow-sm px-4" type="text" id="newPassword2" name="newPassword2"
+        formControlName="newPassword2"><br>
+
+    </form>
+
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modal.close('0')">Discart</button>
+      <button type="button" class="btn btn-primary" (click)="modal.close('1')">Change Password</button>
+    </div>
+  </div>
+</ng-template>
