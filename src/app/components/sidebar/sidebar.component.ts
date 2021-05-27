@@ -86,7 +86,7 @@ export const ROUTES: RouteInfo[] = [
     rtlTitle: "طباعة",
     icon: "icon-align-center",
     class: "",
-    role: 2
+    role: 3
   }
   
 ];
@@ -128,6 +128,7 @@ export class SidebarComponent implements OnInit {
     this.userService.getUserRole().pipe(takeUntil(this.destroy$)).subscribe(
       (res: number) => {
         this.roleUser = res;
+        console.log(this.roleUser)
 
         this.menuItems = ROUTES.filter(menuItem => menuItem.role >= this.roleUser);
 
