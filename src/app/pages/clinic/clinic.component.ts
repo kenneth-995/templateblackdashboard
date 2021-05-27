@@ -106,9 +106,6 @@ export class ClinicComponent implements OnInit {
 
           this.inicializeForm();
 
-          /* this.router.navigateByUrl('/login');
-          this.userService.logout();
-          console.log('[ClinicComponent error] get role user  !=2 =!3'); */
         }
       }
     );
@@ -214,9 +211,10 @@ export class ClinicComponent implements OnInit {
       r => {
         if (r === '1') { //confirm create    
           
-          
+          console.log('hello!!')
         } else {
           //dimiss create
+          this.modalService.dismissAll()
         }
       }
     );
