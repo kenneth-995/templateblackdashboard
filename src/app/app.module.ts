@@ -20,6 +20,7 @@ import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight'; //npm 
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -36,7 +37,7 @@ import { LoginComponent } from './login/login.component';
     NgSelectModule,
     NgOptionHighlightModule
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, RegisterComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

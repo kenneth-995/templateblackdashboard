@@ -1,0 +1,205 @@
+<div class="content m-5">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="title">Register account</h5>
+                    <h5 class="title">User data</h5>
+                </div>
+
+                <div class="card-body">
+
+                    <form form [formGroup]="registerForm">
+
+                        <div class="row">
+                            <div class="col-md-6 pr-md-1">
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input class="form-control" type="text" placeholder="username"
+                                        formControlName='username' id="username" name="username" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 pr-md-1">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input class="form-control" type="email" placeholder="email" formControlName='email'
+                                        id="email" name="email" />
+                                </div>
+                                <div *ngIf="msgEmail" class="text-center" style="color: red;">
+                                    <span>{{msgEmail}}</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6 pr-md-1">
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input class="form-control" type="password" placeholder="password"
+                                        formControlName='password' id="password" name="password" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 pr-md-1">
+                                <div class="form-group">
+                                    <label for="password2">Repeat Password</label>
+                                    <input class="form-control" type="password" placeholder="repeat password"
+                                        formControlName='password2' id="password2" name="password2" />
+                                </div>
+                                <div *ngIf="msgPsswd" class="text-center" style="color: red;">
+                                    <span>{{msgPsswd}}</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-4 pr-md-1">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input class="form-control" type="text" placeholder="name" formControlName='name'
+                                        id="name" name="name" />
+                                </div>
+                            </div>
+                            <div class="col-md-4 pr-md-1">
+                                <div class="form-group">
+                                    <label for="surname">Surname</label>
+                                    <input class="form-control" type="text" placeholder="surname"
+                                        formControlName='surnames' id="surname" name="surname" />
+                                </div>
+
+
+                            </div>
+                            <div class="col-md-4 pr-md-1">
+                                <div class="form-group">
+                                    <label for="phone">Phone</label>
+                                    <input class="form-control" type="text" placeholder="phone" formControlName='phone'
+                                        id="phone" name="phone" />
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6 pr-md-1">
+                                <div class="form-group">
+                                    <label for="collegiateNumber">Colegiate Number</label>
+                                    <input class="form-control" type="collegiateNumber" placeholder="collegiate number"
+                                        formControlName='collegiateNumber' id="collegiateNumber"
+                                        name="collegiateNumber" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 pr-md-1">
+                                <div class="form-group">
+                                    <label for="specialistType">Specialist Type</label>
+                                    <input class="form-control" type="specialistType"
+                                        placeholder="specialist type: Psychologist" formControlName='specialistType'
+                                        id="specialistType" name="specialistType" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="card"> -->
+                        <div class="card-header">
+                            <h5 class="title">Clinic data</h5>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-6 pr-md-1">
+                                <div class="form-group">
+                                    <label for="nameClinic">Clinic Name</label>
+                                    <input class="form-control" type="text" placeholder="name clinic"
+                                        formControlName='nameClinic' id="nameClinic" name="nameClinic" />
+
+                                </div>
+                            </div>
+                            <div class="col-md-6 pr-md-1">
+                                <div class="form-group">
+                                    <label for="emailClinic">Clinic Email</label>
+                                    <input class="form-control" type="email" placeholder="email clinic"
+                                        formControlName='emailClinic' id="emailClinic" name="emailClinic" />
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="col-md-6 pr-md-1">
+                                <div class="form-group">
+                                    <label for="phoneNumberClinic">Clinic Phone</label>
+                                    <input class="form-control" type="text" placeholder="phone number clinic"
+                                        formControlName='phoneNumberClinic' id="phoneNumberClinic"
+                                        name="phoneNumberClinic" />
+
+                                </div>
+                            </div>
+                            <div class="col-md-6 pr-md-1">
+                                <div class="form-group">
+                                    <label for="addressClinic">Clinic Address</label>
+                                    <input class="form-control" type="text" placeholder="address clinic"
+                                        formControlName='addressClinic' id="addressClinic" name="addressClinic" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <div class="modal-footer" *ngIf="showButtonsForm">
+                    <button class="btn btn-primary" (click)="submitFormRegister()">Register</button>
+                    <button type="button" class="btn btn-secondary">Cancel</button>
+                </div>
+                <div class="modal-footer" *ngIf="messageForm">
+                    <span style="color: red;">{{messageForm}}</span>
+                </div>
+            </div>
+
+            <div class="float-right">
+                <a href="#/login" class="btn btn-primary">
+                    Go to login
+                </a>
+            </div>
+
+
+        </div>
+        <div class="col-md-4">
+            <div class="card card-user">
+                <div class="card-body">
+                    <p class="card-text"></p>
+                    <div class="author">
+                        <div class="block block-one"></div>
+                        <div class="block block-two"></div>
+                        <div class="block block-three"></div>
+                        <div class="block block-four"></div>
+
+                        <img src="./../../../assets//img//logo_small_blue.png" style="width: 150px; height: 250px;"
+                            alt="YAPP LOGO">
+                        
+
+                    </div>
+                    <h3 class="title text-center mt-3">Welcome to YAPP APLICATION!</h3>
+
+                    <div class="card-description" style="font-size: large;">
+                        <p>
+                            This is a software for the management of your clinic, where you can store and manage data of
+                        your patients, appointments, reports, treatments. You can also register users (workers of your
+                        clinic), where they will have their own personal space to manage their work.
+                    </p> 
+                        <p>With your "administrator user" profile, you can see how your workers work.</p>
+                        <p>Your workers will be able to see their tasks, but not those of other workers.</p>
+                        <p>Once registered, a confirmation email will be sent to you. You will need to validate the email to access your account.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
