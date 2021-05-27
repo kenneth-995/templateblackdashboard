@@ -1,167 +1,102 @@
-
-
-<ng-template #modalCreateEdit let-modal>
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title">{{textCreateUpdateModal}} Clinic</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modal.close('0')">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-
-        <div *ngIf="!isCreated">
-            <div class="modal-body"
-                style="display:flex; flex-direction: row; justify-content: center; align-items: center">
-                <!-- Image Preview -->
-                <img [src]="imageSrc" *ngIf="imageSrc" style="width: 150px; height: 150px; border-radius: 100%;">
-            </div>
-
-            <form [formGroup]="uploadPhotoForm" (ngSubmit)="uploadPhoto()" class="modal-body"
-                style="display:flex; flex-direction: row; justify-content: center; align-items: center">
-                <label for="uploadPhoto" class="col-2">Photo:</label>
-                <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark " type="file" id="uploadPhoto"
-                    name="uploadPhoto" (change)="onFileChange($event)">
-            </form>
-        </div>
-        <form [formGroup]="createUpdateForm" (ngSubmit)="submitFormCreate()">
-
-            <div class="modal-body"
-                style="display:flex; flex-direction: row; justify-content: center; align-items: center">
-                <label for="nameCreate" class="col-2">Name:</label>
-                <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark" id="nameCreate" name="name" type="text"
-                    formControlName='name' />
-            </div>
-
-            <div class="modal-body"
-                style="display:flex; flex-direction: row; justify-content: center; align-items: center">
-                <label for="address" class="col-2">Address:</label>
-                <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark" id="address" name="address" type="text"
-                    formControlName='address' />
-            </div>
-
-            <div class="modal-body"
-                style="display:flex; flex-direction: row; justify-content: center; align-items: center">
-                <label for="phoneCreate" class="col-2">Phone Number:</label>
-                <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark" id="phoneCreate" name="phoneCreate"
-                    type="text" formControlName='phoneNumber' />
-            </div>
-
-            <div class="modal-body"
-                style="display:flex; flex-direction: row; justify-content: center; align-items: center">
-                <label for="email" class="col-2">Email:</label>
-                <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark" id="email" name="email" type="text"
-                    formControlName='email' />
-            </div>
-
-
-
-        </form>
-
-        <div class="modal-footer" *ngIf="showButtonsForm">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                (click)="modal.close('1')">Save</button>
-            <button type="button" class="btn btn-primary" (click)="modal.close('0')">Cancel</button>
-        </div>
-        <div class="modal-footer" *ngIf="!showButtonsForm && isCreated">
-            <span style="color: red;">All fields is required</span>
-        </div>
-
-    </div>
-
-
-</ng-template>
-
-
-
-<div class=" content">
-    <div class=" row">
-        <div class=" col-md-8">
-            <div class=" card">
-                <div class=" card-header">
-                    <h5 class=" title">Edit Clinic</h5>
+<div class="content">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="title">{{textTitle}}</h5>
                 </div>
                     
-                    <div class=" card-body">
+                    <div class="card-body">
                         
 
 
 
-                            <div class=" row">
-                                <div class=" col-md-8 pr-md-1">
-                                    <div class=" form-group">
-                                        <label for="nameCreate"> Company (disabled) </label>
-                                        <input class=" form-control" disabled="" placeholder="Company" type="text"
+                        <form [formGroup]="updateForm" (submit)="sendForms()">
+
+
+
+                            <div class="row">
+                                <div class="col-md-8 pr-md-1">
+                                    <div class="form-group">
+                                        <label for="nameCreate"> Company  </label>
+                                        <input class="form-control" placeholder="Company" type="text"
                                             formControlName='name' id="nameCreate" name="name"/>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class=" row">
-                                <div class=" col-md-6 pr-md-1">
-                                    <div class=" form-group">
-                                        <label> Email </label>
-                                        <input class=" form-control"  disabled="" placeholder="Address" type="text"
-                                            formControlName='email' />
+                            <div class="row">
+                                <div class="col-md-6 pr-md-1">
+                                    <div class="form-group">
+                                        <label for="email"> Email </label>
+                                        <input class="form-control" placeholder="Address" type="text"
+                                            formControlName='email' id="email" name="email"/>
                                     </div>
                                 </div>
-                                <div class=" col-md-6 pl-md-1">
-                                    <div class=" form-group">
-                                        <label> Telephone </label>
-                                        <input class=" form-control"  disabled="" placeholder="Last Name" type="text"
-                                            formControlName='phoneNumber' />
+                                <div class="col-md-6 pl-md-1">
+                                    <div class="form-group">
+                                        <label for="phoneNumber"> Telephone </label>
+                                        <input class="form-control" placeholder="Last Name" type="text"
+                                            formControlName='phoneNumber' id="phoneNumber" name="phoneNumber"/>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class=" row">
-                                <div class=" col-md-12">
-                                    <div class=" form-group">
-                                        <label> Address </label>
-                                        <input class=" form-control"  disabled="" placeholder="Home Address" type="text"
-                                            formControlName='address' />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="address"> Address </label>
+                                        <input class="form-control" placeholder="Home Address" type="text"
+                                            formControlName='address' id="address" name="address"/>
                                     </div>
                                 </div>
                             </div>
+
+                        </form>
 
                     </div>
-                    <div class=" card-footer">
-                        <button class=" btn btn-fill btn-danger" (click)="openModalUpdate()">Update</button>
+
+                    <div class="modal-footer" *ngIf="showButtonsForm && roleUser===2">
+                        <button type="button" class="btn btn-secondary" (click)="sendForms()">Save</button>
+                        <button type="button" class="btn btn-primary"   (click)="cancelUpdate()">Cancel</button>
                     </div>
                 
                 
             </div>
         </div>
-        <div class=" col-md-4">
-            <div class=" card card-user">
-                <div class=" card-body">
-                    <p class=" card-text"></p>
-                    <div class=" author">
-                        <div class=" block block-one"></div>
-                        <div class=" block block-two"></div>
-                        <div class=" block block-three"></div>
-                        <div class=" block block-four"></div>
-                        <a href="javascript:void(0)">
-                            <img alt="..." class=" avatar" [src]="clinic.photo" />
-                            <h5 class=" title">Mike Andrew</h5>
-                        </a>
-                        <p class=" description">Ceo/Co-Founder</p>
+        <div class="col-md-4">
+            <div class="card card-user">
+                <div class="card-body">
+                    <p class="card-text"></p>
+                    <div class="author">
+                        <div class="block block-one"></div>
+                        <div class="block block-two"></div>
+                        <div class="block block-three"></div>
+                        <div class="block block-four"></div>
+                        
+                            <img [alt]="clinic.name" class="avatar" [src]="clinic.photo" *ngIf="!imageSrc"/>
+                            <img [src]="imageSrc"  class="avatar" *ngIf="imageSrc"> <!--  -->
+                            <h5 class="title">{{clinic.name}}</h5>
+                        
                     </div>
-                    <div class=" card-description">
-                        Do not be scared of the truth because we need to restart the human
-                        foundation in truth And I love you like Kanye loves Kanye I love
-                        Rick Owens’ bed design but the back is...
+                    <div class="card-description">
+                        <form [formGroup]="uploadPhotoForm"*ngIf="roleUser ===2">
+                        <!-- <label for="uploadPhoto">Change Photo:</label> -->
+                        <input class="form-control rounded-sm border-0 shadow-sm px-4" type="file" id="uploadPhoto"
+                            name="uploadPhoto" (change)="onFileChange($event)">
+                    </form>
                     </div>
                 </div>
-                <div class=" card-footer">
-                    <div class=" button-container">
-                        <button class=" btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
-                            <i class=" fab fa-facebook"> </i>
+                <div class="card-footer">
+                    <div class="button-container">
+                        <button class="btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
+                            <i class="fab fa-facebook"> </i>
                         </button>
-                        <button class=" btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
-                            <i class=" fab fa-twitter"> </i>
+                        <button class="btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
+                            <i class="fab fa-twitter"> </i>
                         </button>
-                        <button class=" btn btn-icon btn-round btn-google" href="javascript:void(0)">
-                            <i class=" fab fa-google-plus"> </i>
+                        <button class="btn btn-icon btn-round btn-google" href="javascript:void(0)">
+                            <i class="fab fa-google-plus"> </i>
                         </button>
                     </div>
                 </div>
@@ -169,58 +104,3 @@
         </div>
     </div>
 </div>
-<!-- <form [formGroup]="updateForm" (submit)="sendForms()"></form> -->
-
-<ng-template #modalUpdate>
-    <div class="p-5">
-    <form [formGroup]="updateForm" (submit)="sendForms()">
-
-
-
-                            <div class=" row">
-                                <div class=" col-md-8 pr-md-1">
-                                    <div class=" form-group">
-                                        <label for="nameCreate"> Company (disabled) </label>
-                                        <input class=" form-control" placeholder="Company" type="text"
-                                            formControlName='name' id="nameCreate" name="name"/>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class=" row">
-                                <div class=" col-md-6 pr-md-1">
-                                    <div class=" form-group">
-                                        <label> Email </label>
-                                        <input class=" form-control" placeholder="Address" type="text"
-                                            formControlName='email' />
-                                    </div>
-                                </div>
-                                <div class=" col-md-6 pl-md-1">
-                                    <div class=" form-group">
-                                        <label> Telephone </label>
-                                        <input class=" form-control" placeholder="Last Name" type="text"
-                                            formControlName='phoneNumber' />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class=" row">
-                                <div class=" col-md-12">
-                                    <div class=" form-group">
-                                        <label> Address </label>
-                                        <input class=" form-control" placeholder="Home Address" type="text"
-                                            formControlName='address' />
-                                    </div>
-                                </div>
-                            </div>
-
-                        </form>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                                (click)="modal.close('1')">Save</button>
-                            <button type="button" class="btn btn-primary" (click)="modal.close('0')">Cancel</button>
-                        </div>
-
-                    </div>
-</ng-template>

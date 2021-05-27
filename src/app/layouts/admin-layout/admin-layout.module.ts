@@ -22,6 +22,7 @@ import { TypographyComponent } from "../../pages/typography/typography.component
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { ClinicsComponent } from "src/app/pages/clinics/clinics.component";
+import { ClinicComponent } from "src/app/pages/clinic/clinic.component";
 
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
@@ -49,7 +50,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     TypographyComponent,
     NotificationsComponent,
     MapComponent,
-    ClinicsComponent
+    ClinicsComponent,
+    ClinicComponent
     // RtlComponent
   ]
 })

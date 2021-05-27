@@ -46,6 +46,7 @@ export class ClinicComponent implements OnInit {
 
   public showButtonsForm: boolean = false;
 
+  public textTitle: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -77,7 +78,6 @@ export class ClinicComponent implements OnInit {
       email: ['', Validators.required],
     });
 
-    console.log('6666666666666666666666666')
     
   }
 
@@ -89,10 +89,10 @@ export class ClinicComponent implements OnInit {
         if (res === 2 || res === 3) {
           console.log('role admin or user')
           this.getClinic();
-          
+          this.textTitle = 'Edit Clinic';
 
         } else {
-
+          this.textTitle = 'Profile Company';
           //placehjolder clinica
           let noCLinic = new ClinicDto;
           noCLinic.id = 0;
@@ -135,6 +135,14 @@ export class ClinicComponent implements OnInit {
     let _address= this.clinic.address;
     let _phoneNumber= this.clinic.phoneNumber;
     let _email= this.clinic.email;
+
+    // only the clinic admin can update, the superadmin really has a fictitious clinic assigned
+    if (this.roleUser === 1 || this.roleUser === 3) {
+      this.updateForm.controls['name'].disable()
+      this.updateForm.controls['address'].disable()
+      this.updateForm.controls['phoneNumber'].disable()
+      this.updateForm.controls['email'].disable()
+    } 
 
     this.observableuploadPhotoForm = this.updateForm.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(
       (field) => {
