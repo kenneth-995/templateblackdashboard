@@ -8,7 +8,7 @@ import { MedicalsheetComponent } from "../../pages/medicalsheets/medicalsheet.co
 import { TreatmentsComponent } from "../../pages/treatments/treatments.component";
 import { UserComponent } from "../../pages/user/user.component";
 import { ReportsComponent } from "../../pages/reports/reports.component";
-import { TypographyComponent } from "../../pages/typography/typography.component";
+import { SpecialistsComponent } from "../../pages/specialists/specialists.component";
 import { ClinicsComponent } from "src/app/pages/clinics/clinics.component";
 import { ClinicComponent } from 'src/app/pages/clinic/clinic.component';
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
@@ -20,7 +20,7 @@ export const AdminLayoutRoutes: Routes = [
   { path: "treatments", component: TreatmentsComponent, canActivate: [AuthGuard] },
   { path: "user", component: UserComponent, canActivate: [AuthGuard] },
   { path: "reports", component: ReportsComponent, canActivate: [AuthGuard] },
-  { path: "typography", component: TypographyComponent, canActivate: [AuthGuard] },
+  { path: "specialists", component: SpecialistsComponent, canActivate: [AuthGuard] },
   { path: "clinics", component: ClinicsComponent, canActivate: [AuthGuard] },
   { path: "clinic", component: ClinicComponent, canActivate: [AuthGuard] }, 
   // { path: "rtl", component: RtlComponent, canActivate: [AuthGuard] }

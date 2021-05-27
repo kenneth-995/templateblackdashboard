@@ -17,7 +17,7 @@ import { MedicalsheetComponent } from "../../pages/medicalsheets/medicalsheet.co
 import { TreatmentsComponent } from "../../pages/treatments/treatments.component";
 import { UserComponent } from "../../pages/user/user.component";
 import { ReportsComponent } from "../../pages/reports/reports.component";
-import { TypographyComponent } from "../../pages/typography/typography.component";
+import { SpecialistsComponent } from "../../pages/specialists/specialists.component";
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
@@ -47,7 +47,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     UserComponent,
     ReportsComponent,
     PatientsComponent,
-    TypographyComponent,
+    SpecialistsComponent,
     TreatmentsComponent,
     MedicalsheetComponent,
     ClinicsComponent,

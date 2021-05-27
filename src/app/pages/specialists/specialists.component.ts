@@ -15,9 +15,9 @@ import { User } from 'src/app/models/entities/user-model';
 
 @Component({
   selector: "app-typography",
-  templateUrl: "typography.component.html"
+  templateUrl: "specialists.component.html"
 })
-export class TypographyComponent implements OnInit {
+export class SpecialistsComponent implements OnInit {
   @ViewChild("modalDelete", { static: false }) modalDelete: TemplateRef<any>;
   @ViewChild("modalCreate", { static: false }) modalCreate: TemplateRef<any>;
   

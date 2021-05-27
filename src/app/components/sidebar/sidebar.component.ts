@@ -63,8 +63,8 @@ export const ROUTES: RouteInfo[] = [
     role: 3
   },
   {
-    path: "/typography",
-    title: "Typography Management Specialists",
+    path: "/specialists",
+    title: "Specialists",
     rtlTitle: "طباعة",
     icon: "icon-align-center",
     class: "",
