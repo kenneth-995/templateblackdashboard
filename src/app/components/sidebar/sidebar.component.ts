@@ -23,8 +23,8 @@ export const ROUTES: RouteInfo[] = [
     role: 3
   },
   {
-    path: "/icons",
-    title: "Icons Patients",
+    path: "/patients",
+    title: "Patients",
     rtlTitle: "الرموز",
     icon: "icon-atom",
     class: "",

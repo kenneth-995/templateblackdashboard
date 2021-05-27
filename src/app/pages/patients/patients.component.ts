@@ -20,9 +20,9 @@ import { TreatmentDto } from 'src/app/models/dto/treatment/TreatmentDto';
 
 @Component({
   selector: "app-icons",
-  templateUrl: "icons.component.html"
+  templateUrl: "patients.component.html"
 })
-export class IconsComponent implements OnInit {
+export class PatientsComponent implements OnInit {
   @ViewChild("modalDelete", { static: false }) modalDelete: TemplateRef<any>;
   @ViewChild("modalCreateEdit", { static: false }) modalCreateEdit: TemplateRef<any>;
 
