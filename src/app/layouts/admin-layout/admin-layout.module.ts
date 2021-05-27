@@ -14,9 +14,9 @@ import { AdminLayoutRoutes } from "./admin-layout.routing";
 import { DashboardComponent } from "../../pages/dashboard/dashboard.component";
 import { PatientsComponent } from "../../pages/patients/patients.component";
 import { MedicalsheetComponent } from "../../pages/medicalsheets/medicalsheet.component";
-import { NotificationsComponent } from "../../pages/notifications/notifications.component";
+import { TreatmentsComponent } from "../../pages/treatments/treatments.component";
 import { UserComponent } from "../../pages/user/user.component";
-import { TablesComponent } from "../../pages/tables/tables.component";
+import { ReportsComponent } from "../../pages/reports/reports.component";
 import { TypographyComponent } from "../../pages/typography/typography.component";
 // import { RtlComponent } from "../../pages/rtl/rtl.component";
 
@@ -45,10 +45,10 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   declarations: [
     DashboardComponent,
     UserComponent,
-    TablesComponent,
+    ReportsComponent,
     PatientsComponent,
     TypographyComponent,
-    NotificationsComponent,
+    TreatmentsComponent,
     MedicalsheetComponent,
     ClinicsComponent,
     ClinicComponent

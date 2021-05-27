@@ -19,9 +19,9 @@ import { CreateUpdateReportDto } from 'src/app/models/dto/report/CreateUpdateRep
 
 @Component({
   selector: "app-tables",
-  templateUrl: "tables.component.html"
+  templateUrl: "reports.component.html"
 })
-export class TablesComponent implements OnInit {
+export class ReportsComponent implements OnInit {
   @ViewChild("updateCreate", { static: false }) updateCreate: TemplateRef<any>;
   @ViewChild("create", { static: false }) create: TemplateRef<any>;
   @ViewChild("modalDelete", { static: false }) modalDelete: TemplateRef<any>;

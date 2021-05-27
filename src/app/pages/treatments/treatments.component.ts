@@ -18,9 +18,9 @@ import { PatientDto } from 'src/app/models/dto/patient/PatientDto';
 
 @Component({
   selector: "app-notifications",
-  templateUrl: "notifications.component.html"
+  templateUrl: "treatments.component.html"
 })
-export class NotificationsComponent implements OnInit {
+export class TreatmentsComponent implements OnInit {
   @ViewChild("updateCreate", { static: false }) updateCreate: TemplateRef<any>;
   @ViewChild("modalDelete", { static: false }) modalDelete: TemplateRef<any>;
   private destroy$ = new Subject();

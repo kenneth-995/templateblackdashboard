@@ -39,8 +39,8 @@ export const ROUTES: RouteInfo[] = [
     role: 3
   },
   {
-    path: "/notifications",
-    title: "Notifications Treatments",
+    path: "/treatments",
+    title: "Treatments",
     rtlTitle: "إخطارات",
     icon: "icon-bell-55",
     class: "",
@@ -55,8 +55,8 @@ export const ROUTES: RouteInfo[] = [
     class: ""
   }, */
   {
-    path: "/tables",
-    title: "Table List Reports",
+    path: "/reports",
+    title: "Reports",
     rtlTitle: "قائمة الجدول",
     icon: "icon-puzzle-10",
     class: "",
