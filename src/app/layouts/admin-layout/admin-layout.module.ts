@@ -13,7 +13,7 @@ import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
 import { AdminLayoutRoutes } from "./admin-layout.routing";
 import { DashboardComponent } from "../../pages/dashboard/dashboard.component";
 import { PatientsComponent } from "../../pages/patients/patients.component";
-import { MapComponent } from "../../pages/map/map.component";
+import { MedicalsheetComponent } from "../../pages/medicalsheets/medicalsheet.component";
 import { NotificationsComponent } from "../../pages/notifications/notifications.component";
 import { UserComponent } from "../../pages/user/user.component";
 import { TablesComponent } from "../../pages/tables/tables.component";
@@ -49,7 +49,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     PatientsComponent,
     TypographyComponent,
     NotificationsComponent,
-    MapComponent,
+    MedicalsheetComponent,
     ClinicsComponent,
     ClinicComponent
     // RtlComponent

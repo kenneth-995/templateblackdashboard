@@ -31,8 +31,8 @@ export const ROUTES: RouteInfo[] = [
     role: 3
   },
   {
-    path: "/maps",
-    title: "Maps Medical Sheet",
+    path: "/medicalsheet",
+    title: "Medical Sheet",
     rtlTitle: "خرائط",
     icon: "icon-pin",
     class: "" ,

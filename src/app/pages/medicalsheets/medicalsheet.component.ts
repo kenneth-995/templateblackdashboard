@@ -27,9 +27,9 @@ import { User } from 'src/app/models/entities/user-model';
 
 @Component({
   selector: "app-map",
-  templateUrl: "map.component.html"
+  templateUrl: "medicalsheet.component.html"
 })
-export class MapComponent implements OnInit {
+export class MedicalsheetComponent implements OnInit {
   @ViewChild('calendar') calendarComponent: FullCalendarComponent;
   @ViewChild("modalCreateEdit", { static: false }) modalCreateEdit: TemplateRef<any>;
   @ViewChild("modalInfo", { static: false }) modalInfo: TemplateRef<any>;
