@@ -13,10 +13,8 @@
 
           <form class="form" [formGroup]="profileForm" (ngSubmit)="saveProfile()">
 
-
-
             <div class="row">
-              <div class="col-md-8 pr-md-1">
+              <div class="col-md-6 pr-md-1">
                 <div class="form-group">
                   <label for="nameCreate">Email</label>
                   <input type="text" class="form-control" name="email" id="email" [value]="userLogged.email"
@@ -26,51 +24,73 @@
             </div>
 
             <div class="row">
-              <div class="col-md-6 pr-md-1">
+              <div class="col-md-4 pr-md-1">
                 <div class="form-group">
-                  <label for="name"> Name </label>
+                  <label for="name">Name </label>
                   <input class="form-control" placeholder="Address" type="text" formControlName='name' name="name"
                     id="name" />
                 </div>
               </div>
-              <div class="col-md-6 pl-md-1">
+              <div class="col-md-4 pl-md-1">
                 <div class="form-group">
-                  <label for="surname">Surnames </label>
+                  <label for="surname">Surnames</label>
                   <input class="form-control" placeholder="Last Name" type="text" formControlName="surnames"
                     name="surname" id="surname" />
                 </div>
               </div>
-            </div>
 
-            <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-4 pl-md-1">
                 <div class="form-group">
-                  <label for="phone"> Phone </label>
+                  <label for="phone">Phone </label>
                   <input class="form-control" placeholder="Hphone number" type="text" formControlName="phone" name="phone" id="phone" />
                 </div>
               </div>
             </div>
 
             <div class="row">
-              <div class="col-md-6 pl-md-1">
+              
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
                 <div class="form-group" *ngIf="roleUser != 1">
-                  <label for="specialistType"> Specialist Type </label>
+                  <label for="specialistType">Specialist Type</label>
                   <input class="form-control" placeholder="Specialist type" type="text" formControlName="specialistType" name="specialistType" id="specialistType" />
                 </div>
-                <div class="col-md-6 pl-md-1">
-                  <div class="form-group" *ngIf="roleUser != 1">
-                    <label for="collegiateNumber"> Colegiate Number </label>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group" *ngIf="roleUser != 1">
+                  <label for="collegiateNumber">Colegiate Number </label>
                     <input class="form-control" placeholder="Colegiate number" type="text" formControlName="collegiateNumber" name="collegiateNumber" id="collegiateNumber" />
-                  </div>
                 </div>
               </div>
             </div>
 
+
             <div class="row">
+              <div class="col-md-6">
+                <div class="form-group" *ngIf="roleUser == 2">
+                  <label for="isAdminRole">Role admin</label>
+                  <input class="form-control" type="checkbox" name="isAdminRole" id="isAdminRole" formControlName="isAdminRole">
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group" *ngIf="roleUser != 1">
+                  <label for="active"> Uncheck and save to delete your account </label>
+                  <input class="form-control" type="checkbox" formControlName="active" name="active" id="active">
+                </div>
+              </div>
+            </div>
+
+
+
+            <!-- <div class="row">
 
               <div class="col-md-6 pl-md-1">
                 <div class="form-group" *ngIf="roleUser == 2">
-                  <label for="isAdminRole">Role admin </label>
+                  <label for="isAdminRole">Role admin</label>
                   <input class="form-control" type="checkbox" name="isAdminRole" id="isAdminRole"
                     formControlName="isAdminRole">
                 </div>
@@ -80,20 +100,20 @@
             <div class="row">
               <div class="col-md-6 pl-md-1">
                 <div class="form-group" *ngIf="roleUser != 1">
-                  <label for="address"> Uncheck and save to delete your account </label>
+                  <label for="active"> Uncheck and save to delete your account </label>
                   <input class="form-control" type="checkbox" formControlName="active" name="active" id="active">
                 </div>
               </div>
-            </div>
+            </div> -->
 
-            <div class="row">
+            <!-- <div class="row">
               <div class="col-md-6 pr-md-1">
                 <div class="form-group">
 
                 </div>
               </div>
 
-            </div>
+            </div> -->
 
 
 
