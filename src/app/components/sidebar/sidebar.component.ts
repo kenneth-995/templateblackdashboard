@@ -114,7 +114,7 @@ export class SidebarComponent implements OnInit {
       this.userLogged = this.userService.getUserLocalStorage()
     }
 
-    ROUTES.forEach(e=>console.log(e))
+    //ROUTES.forEach(e=>console.log(e))
   }
 
   isMobileMenu() {
