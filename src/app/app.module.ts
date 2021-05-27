@@ -6,6 +6,8 @@ import { RouterModule } from "@angular/router";
 import { ToastrModule } from 'ngx-toastr';
 
 
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 import { AuthService } from './core/interceptors/auth.service';
 
 import { AppComponent } from "./app.component";
@@ -35,7 +37,8 @@ import { RegisterComponent } from './register/register.component';
     AppRoutingModule,
     ToastrModule.forRoot(),
     NgSelectModule,
-    NgOptionHighlightModule
+    NgOptionHighlightModule,
+    NgxSpinnerModule
   ],
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginComponent, RegisterComponent],
   providers: [
