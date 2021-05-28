@@ -17,77 +17,26 @@
               <button type="button" class="btn btn-primary" (click)='openModalCreateNewSpecialist()'> Add Specialist &#43;</button>
             </div>
 
-            <!-- <h4>Filters</h4>
+            <h4>Filters</h4>
             <div class="row my-2 ">
 
               <div class="col-2 text-center">
                 Name <input class="form-control" type="text" placeholder="find by name" #name
-                  (keyup)="findByParams(name.value, minage.value, maxage.value)">
+                  (keyup)="findByParams(name.value)">
               </div>
-
-              <div class="col-2 text-center">
-                Min age <input class="form-control" type="number" placeholder="find min age" #minage
-                  (change)="findByParams(name.value, minage.value, maxage.value)">
-              </div>
-
-              <div class="col-2 text-center">
-                Max age <input class="form-control text-white" type="number" placeholder="find max age" #maxage
-                  (change)="findByParams(name.value, minage.value, maxage.value)">
-              </div>
-
-              <div class="col-2 text-center" *ngIf="roleUser === 1">
-                Patients treated for
-                <select class="form-control text-white" [(ngModel)]="specialistIdParamSearch"
-                  (change)="findByParams(name.value, minage.value, maxage.value)">
-                  <option value="0" class="text-dark">All specialists</option>
-                  <option *ngFor="let s of specialists" [value]="s.id" class="text-dark">{{s.name + ' ' + s.surnames}}
-                  </option>
-                </select>
-              </div>
+             
 
 
               <div class="col-2 text-center" *ngIf="roleUser === 1">
                 Clinic
                 <select class="form-control text-white" [(ngModel)]="clinicIdParamSearch"
-                  (change)="findByParams(name.value, minage.value, maxage.value)">
+                  (change)="findByParams(name.value)">
                   <option value="0" class="text-dark">All clinics</option>
                   <option *ngFor="let c of clinics" [value]="c.id" class="text-dark">{{c.name}}</option>
                 </select>
               </div>
 
             </div>
-
-            <h4>Ordering</h4>
-            <div class="row my-2">
-              <div class="col-2 ">
-                <button type="button" class="btn btn-primary my-3" style="font-size: 11px;"
-                  (click)='orderByPatientName("desc")'>
-                  Name&nbsp; <i class="tim-icons icon-minimal-up"></i>
-                </button>
-              </div>
-              <div class="col-2 ">
-                <button type="button" class="btn btn-primary my-3" style="font-size: 11px;"
-                  (click)='orderByPatientName("asc")'>
-                  Name&nbsp; <i class="tim-icons icon-minimal-down"></i>
-
-                </button>
-              </div>
-              <div class="col-2 ">
-                <button type="button" class="btn btn-primary my-3" style="font-size: 11px;"
-                  (click)='orderByPatientAge("desc")'>
-                  Age&nbsp; <i class="tim-icons icon-minimal-up"></i>
-                </button>
-              </div>
-              <div class="col-2 ">
-                <button type="button" class="btn btn-primary my-3" style="font-size: 11px;"
-                  (click)='orderByPatientAge("asc")'>
-                  Age&nbsp; <i class="tim-icons icon-minimal-down"></i>
-                </button>
-              </div>
-
-
-            </div> -->
-
 
 
           </div>
@@ -126,13 +75,16 @@
                   <td>
                       {{s.roles}}
                   </td>
-                  <td>{{s.name}}</td>
+                  <td>{{s.clinicId}}</td>
                   <td><button class="btn btn-danger" (click)='openModalDeleteSpecialist(s.id, i)'
                           [disabled]="userLogged.id === s.id"><i class="far fa-trash-alt"></i></button></td>
                       
               </tr>
               </tbody>
             </table>
+            <div class="text-center">
+              <p *ngIf="!isSpecialists" style="color: rgb(242, 242, 242);">Specialists not found</p>
+            </div>
           </div>
         </div>
       </div>

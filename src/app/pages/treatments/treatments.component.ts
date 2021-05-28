@@ -279,9 +279,6 @@ export class TreatmentsComponent implements OnInit {
       this.createUpdateForm.controls['userId'].disable();
     } 
 
-    let _reason = this.createUpdateForm.controls['reason'].value
-
-
     this.observableCreateUpdateForm = this.createUpdateForm.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(
       (field) => {
         console.log('inicializeNewFormTreatment subscriber')
@@ -448,31 +445,6 @@ export class TreatmentsComponent implements OnInit {
       this.treatments = this.treatments.filter(
         treatment => new Date(treatment.startDate) <= new Date(maxdate) );
     }
-
-    /* if (this.clinicIdParamSearch != 0) {
-      console.log(this.patients)
-      this.patients = this.patients.filter(patient => patient.clinicId == this.clinicIdParamSearch);
-      console.log(this.patients)
-      //this.patients.sort((a, b) => (a.name > b.name ? -1 : 1));
-      console.log(this.clinicIdParamSearch)
-    }
-
-    if (this.specialistIdParamSearch != 0) {
-
-      //FILTER TREATMENTS BY SPECIALIST
-      const treatmentsBySpecialist = this.treatments.filter(t => t.specialistId == this.specialistIdParamSearch)
-
-      const patientsFiltered : PatientDto[] = [];
-
-      //FILTER PATIENTS BY TREATMENTS
-      this.patients.forEach(p => {
-        treatmentsBySpecialist.forEach(t => {
-          if (t.patientId == p.id) patientsFiltered.push(p)
-        });
-      });
-      //SET PATIENTS 
-      this.patients = patientsFiltered;
-    } */
 
     this.isTreatments = this.treatments.length >0
   }

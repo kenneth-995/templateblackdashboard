@@ -27,8 +27,11 @@ export class SpecialistsComponent implements OnInit {
   public roleUser: number;
 
   public specialists: User[] = [];
+  public specialistsAux: User[] = [];
+  public isSpecialists: boolean = false;
   public clinics: ClinicDto[] = [];
   public clinic: ClinicDto = new ClinicDto;
+  public clinicIdParamSearch: number = 0; //[(ngModel)]
 
   public createSpecialistForm: FormGroup;
   public observablecreateSpecialistForm: Subscription = new Subscription();
@@ -77,6 +80,7 @@ export class SpecialistsComponent implements OnInit {
             this.userService.getAllUsers().pipe(takeUntil(this.destroy$)).subscribe(
               (res: User[]) => {
                 this.specialists = res;
+                this.specialistsAux = res;
                 console.log('specialists')
                 console.log(res)
               }
@@ -97,6 +101,7 @@ export class SpecialistsComponent implements OnInit {
               .pipe(takeUntil(this.destroy$)).subscribe(
                 (res: User[]) => {
                   this.specialists = res;
+                  this.specialistsAux = res;
                   console.log('specialists')
                   console.log(res)
                 }
@@ -110,7 +115,6 @@ export class SpecialistsComponent implements OnInit {
             );
   
           } else {
-            this.router.navigateByUrl('/home');
             console.log('[errorSpecialistsComponent] get role user !=1 !=2');
           }
   
@@ -194,11 +198,9 @@ export class SpecialistsComponent implements OnInit {
   
     }
   
-    isValidEmail(value) {
+    private isValidEmail(value) {
       return /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,5}$/.test(value);
     }
-  
-  
   
     public openModalDeleteSpecialist(id: number, idx: number) {
       this.modalService.open(this.modalDelete).result.then(
@@ -233,6 +235,23 @@ export class SpecialistsComponent implements OnInit {
           console.log(error)
         }
       );
+    }
+
+    public findByParams(name: string) {
+      this.specialists = this.specialistsAux; 
+     
+      if (name) {
+        console.log('name')
+        this.specialists = this.specialists.filter(
+          specialist => specialist.name.toLowerCase().includes(name.toLowerCase()));
+      }
+  
+      if (this.clinicIdParamSearch != 0) {
+        this.specialists = this.specialists.filter(patient => patient.clinicId == this.clinicIdParamSearch);
+      }
+      
+      this.isSpecialists = this.specialists.length >0
+      console.log(this.isSpecialists)
     }
   
     ngOnDestroy(): void {
