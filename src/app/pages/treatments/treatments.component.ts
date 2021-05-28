@@ -279,13 +279,15 @@ export class TreatmentsComponent implements OnInit {
       this.createUpdateForm.controls['userId'].disable();
     } 
 
-    
+    let _reason = this.createUpdateForm.controls['reason'].value
 
 
     this.observableCreateUpdateForm = this.createUpdateForm.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(
       (field) => {
         console.log('inicializeNewFormTreatment subscriber')
-        if (this.createUpdateForm.controls['reason'].value != '' &&
+        console.log(this.createUpdateForm.controls['reason'].value)
+        if (this.createUpdateForm.controls['reason'].value != null &&
+            this.createUpdateForm.controls['reason'].value != '' &&
             this.createUpdateForm.controls['startDate'].value != '' &&
             this.createUpdateForm.controls['userId'].value != 0 &&
             this.createUpdateForm.controls['userId'].value != null &&
