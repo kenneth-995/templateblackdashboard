@@ -5,63 +5,52 @@
                 <div class="card-header">
                     <h5 class="title">{{textTitle}}</h5>
                 </div>
-                    
-                    <div class="card-body">
-                        
 
-
-
-                        <form [formGroup]="updateForm" (submit)="sendForms()">
-
-
-
-                            <div class="row">
-                                <div class="col-md-8 pr-md-1">
-                                    <div class="form-group">
-                                        <label for="nameCreate"> Company  </label>
-                                        <input class="form-control" placeholder="Company" type="text"
-                                            formControlName='name' id="nameCreate" name="name"/>
-                                    </div>
+                <div class="card-body">
+                    <form [formGroup]="updateForm" (submit)="sendForms()">
+                        <div class="row">
+                            <div class="col-md-8 pr-md-1">
+                                <div class="form-group">
+                                    <label for="nameCreate"> Company </label>
+                                    <input class="form-control" placeholder="Company" type="text" formControlName='name'
+                                        id="nameCreate" name="name" />
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="row">
-                                <div class="col-md-6 pr-md-1">
-                                    <div class="form-group">
-                                        <label for="email"> Email </label>
-                                        <input class="form-control" placeholder="Address" type="text"
-                                            formControlName='email' id="email" name="email"/>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 pl-md-1">
-                                    <div class="form-group">
-                                        <label for="phoneNumber"> Telephone </label>
-                                        <input class="form-control" placeholder="Last Name" type="text"
-                                            formControlName='phoneNumber' id="phoneNumber" name="phoneNumber"/>
-                                    </div>
+                        <div class="row">
+                            <div class="col-md-6 pr-md-1">
+                                <div class="form-group">
+                                    <label for="email"> Email </label>
+                                    <input class="form-control" placeholder="Address" type="text"
+                                        formControlName='email' id="email" name="email" />
                                 </div>
                             </div>
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="address"> Address </label>
-                                        <input class="form-control" placeholder="Home Address" type="text"
-                                            formControlName='address' id="address" name="address"/>
-                                    </div>
+                            <div class="col-md-6 pl-md-1">
+                                <div class="form-group">
+                                    <label for="phoneNumber"> Telephone </label>
+                                    <input class="form-control" placeholder="Last Name" type="text"
+                                        formControlName='phoneNumber' id="phoneNumber" name="phoneNumber" />
                                 </div>
                             </div>
+                        </div>
 
-                        </form>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="address"> Address </label>
+                                    <input class="form-control" placeholder="Home Address" type="text"
+                                        formControlName='address' id="address" name="address" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
 
-                    </div>
-
-                    <div class="modal-footer" *ngIf="showButtonsForm && roleUser===2">
-                        <button type="button" class="btn btn-secondary" (click)="sendForms()">Save</button>
-                        <button type="button" class="btn btn-primary"   (click)="cancelUpdate()">Cancel</button>
-                    </div>
-                
-                
+                <div class="modal-footer" *ngIf="showButtonsForm && roleUser===2">
+                    <button type="button" class="btn btn-secondary" (click)="sendForms()">Save</button>
+                    <button type="button" class="btn btn-primary" (click)="cancelUpdate()">Cancel</button>
+                </div>
             </div>
         </div>
         <div class="col-md-4">
@@ -73,18 +62,17 @@
                         <div class="block block-two"></div>
                         <div class="block block-three"></div>
                         <div class="block block-four"></div>
-                        
-                            <img [alt]="clinic.name" class="avatar" [src]="clinic.photo" *ngIf="!imageSrc"/>
-                            <img [src]="imageSrc"  class="avatar" *ngIf="imageSrc"> <!--  -->
-                            <h5 class="title">{{clinic.name}}</h5>
-                        
+
+                        <img [alt]="clinic.name" class="avatar" [src]="clinic.photo" *ngIf="!imageSrc" />
+                        <img [src]="imageSrc" class="avatar" *ngIf="imageSrc">
+                        <h5 class="title">{{clinic.name}}</h5>
+
                     </div>
                     <div class="card-description">
-                        <form [formGroup]="uploadPhotoForm"*ngIf="roleUser ===2">
-                        <!-- <label for="uploadPhoto">Change Photo:</label> -->
-                        <input class="form-control rounded-sm border-0 shadow-sm px-4" type="file" id="uploadPhoto"
-                            name="uploadPhoto" (change)="onFileChange($event)">
-                    </form>
+                        <form [formGroup]="uploadPhotoForm" *ngIf="roleUser ===2">
+                            <input class="form-control rounded-sm border-0 shadow-sm px-4" type="file" id="uploadPhoto"
+                                name="uploadPhoto" (change)="onFileChange($event)">
+                        </form>
                     </div>
                 </div>
                 <div class="card-footer">

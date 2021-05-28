@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
-import { Subject } from 'rxjs';
 import { PatientDto } from '../models/dto/patient/PatientDto';
 import { CreatePatientDto } from '../models/dto/patient/CreatePatientDto';
 

@@ -68,9 +68,6 @@ export class UserComponent implements OnInit {
       this.userLogged = this.userService.getUserLocalStorage()
     }
 
-    //console.log('[profileUser]')
-    //console.log(this.userLogged)
-
     this.userService.getUserRole().pipe(takeUntil(this.destroy$)).subscribe(
       (res: number) => {
         this.roleUser = res;
@@ -82,21 +79,16 @@ export class UserComponent implements OnInit {
       file: null
     })
 
-
-
   }
 
   saveProfile() {
 
-
     if (this.profileForm.valid) {
-
       //OPEN MODAL WARNING DELETE ACOUNT
       if (!this.profileForm.controls['active'].value) {
         this.modalService.open(this.modalDeactivate).result.then(
           r => {
             if (r === '0') {
-              console.log('no delete acount')
               this.profileForm.controls['active'].setValue(true);
               return true;
             }
@@ -104,7 +96,6 @@ export class UserComponent implements OnInit {
               //SEND REQUEST
               //IF CONFIRM 'YES' SEND REQUEST AND REDIRECT TO LOGIN AND SET LOCALSTORAGE
               this.userService.logout();
-              console.log('yes delete acount')
             }
 
           }
@@ -133,8 +124,7 @@ export class UserComponent implements OnInit {
               this.setFormProfileValues();
               this.toast.success('Profile updated', 'Successfuly')
 
-              this.changeProfileForm = false; /////////////////////////////////////////////////////
-
+              this.changeProfileForm = false;
 
               this.userService.getUserRole().pipe(takeUntil(this.destroy$)).subscribe(
                 (res: number) => {
@@ -143,8 +133,7 @@ export class UserComponent implements OnInit {
               );
             },
             (error) => {
-              this.toast.error('In request', 'Error')
-              console.log(this.profileForm.value)
+              this.toast.error('Please, try again', 'Info')
             }
           );
       }
@@ -158,8 +147,6 @@ export class UserComponent implements OnInit {
     this.modalService.open(this.updatePassword).result.then(
       r => {
         if (r === '1') {
-          console.log('CHANGE')
-          console.log(this.updatePasswordForm.value)
           if (this.updatePasswordForm.valid) {
 
             const psw1 = this.updatePasswordForm.controls['newPassword'].value;
@@ -186,30 +173,20 @@ export class UserComponent implements OnInit {
               this.toast.error('The new password does not match', 'Error change password')
             }
 
-
-
-
-
           } else {
-            console.log('form no valid')
             this.toast.error('Please verify passwords', 'Error change password')
 
           }
           return;
         }
         else {
-          console.log('NO CHANGE PASSWORD')
+          //DIMISS CHANGE PASSWORD
         }
-
       }
     );
-
     this.updatePasswordForm.controls['oldPassword'].setValue('');
     this.updatePasswordForm.controls['newPassword'].setValue('');
     this.updatePasswordForm.controls['newPassword2'].setValue('');
-
-
-
   }
 
   public setFormProfileValues() {
@@ -234,8 +211,6 @@ export class UserComponent implements OnInit {
     let _isAdminRole = this.profileForm.controls['isAdminRole'].value;
     let _active = this.profileForm.controls['active'].value;
 
-    console.log(this.profileForm)
-
     this.profileForm.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(
       (field) => {
         if (this.profileForm.valid &&
@@ -251,9 +226,6 @@ export class UserComponent implements OnInit {
         } else {
           this.changeProfileForm = false;
         }
-
-        console.log(this.profileForm.controls['isAdminRole'].value)
-
       }
     );
 
@@ -269,8 +241,7 @@ export class UserComponent implements OnInit {
 
 
       if (!FILE_EXTENSIONS.includes(fileExtension[1]) || event.target.files[0].size >= MAX_FILE_SIZE) {
-        console.log('format INcorrect')
-        console.log('file size es muy grande')
+        
         this.toast.info('Wrong format or size too large, please choose other image', 'Info')
       } else {
         const [file] = event.target.files;

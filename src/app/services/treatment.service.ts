@@ -1,12 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
-
-import { TreatmentDto } from '../models/dto/treatment/TreatmentDto';
 import { CreateUpdateTreatmentDto } from '../models/dto/treatment/CreateUpdateTreatmentDto';
-
 
 
 @Injectable({
@@ -34,7 +30,6 @@ export class TreatmentService {
     return this.htttClient.get(this.base_url + '/treatment/specialist/' + specialistId);
   }
 
-  
   insertTreatment(treatment:CreateUpdateTreatmentDto) {
       return this.htttClient.post(this.base_url + '/treatment/', treatment);
   }

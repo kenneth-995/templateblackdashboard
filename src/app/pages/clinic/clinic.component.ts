@@ -1,9 +1,7 @@
-import { Component, OnInit, OnDestroy, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { UserService } from 'src/app/services/user.service';
@@ -12,7 +10,6 @@ import { UploadFileService } from 'src/app/services/upload-file.service';
 
 import { ClinicDto } from 'src/app/models/dto/clinic/ClinicDto'
 import { UpdateCreateClinicDto } from 'src/app/models/dto/clinic/UpdateCreateClinicDto'
-
 import { User } from 'src/app/models/entities/user-model';
 
 @Component({
@@ -50,9 +47,7 @@ export class ClinicComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router,
     private toast: ToastrService,
-    private modalService: NgbModal,
     private userService: UserService,
     private clinicService: ClinicService,
     private uploadFileService: UploadFileService) { }
@@ -78,11 +73,9 @@ export class ClinicComponent implements OnInit {
       email: ['', Validators.required],
     });
 
-    
   }
 
-  getData() {
-
+  private getData() {
     this.userService.getUserRole().pipe(takeUntil(this.destroy$)).subscribe(
       (res: number) => {
         this.roleUser = res;
@@ -93,7 +86,7 @@ export class ClinicComponent implements OnInit {
 
         } else {
           this.textTitle = 'Profile Company';
-          //placehjolder clinica
+          //placeholder clinica
           let noCLinic = new ClinicDto;
           noCLinic.id = 0;
           noCLinic.address = "Mountain View, Santa Clara, California 94043, United States";
@@ -101,9 +94,7 @@ export class ClinicComponent implements OnInit {
           noCLinic.photo = "./../../../assets//img//yappimg.png"
           noCLinic.phoneNumber = "690180007"
           noCLinic.email = "yappaplication@gmail.com";
-
           this.clinic = noCLinic;
-
           this.inicializeForm();
 
         }
@@ -136,7 +127,7 @@ export class ClinicComponent implements OnInit {
     let _phoneNumber= this.clinic.phoneNumber;
     let _email= this.clinic.email;
 
-    // only the clinic admin can update, the superadmin really has a fictitious clinic assigned
+    // only the clinic admin (this.roleUser === 2) can update, the superadmin really has a fictitious clinic assigned
     if (this.roleUser === 1 || this.roleUser === 3) {
       this.updateForm.controls['name'].disable()
       this.updateForm.controls['address'].disable()
@@ -168,18 +159,13 @@ export class ClinicComponent implements OnInit {
         else this.showButtonsForm = false;
       }
     );
-
-    console.log(this.updateForm.value)
-    
   }
-
 
   private updatePhotoClinic() {
     var formData: any = new FormData();
     formData.append("file", this.uploadPhotoForm.get('file').value);
     this.uploadFileService.uploadFileClinic(formData, this.clinic.id).subscribe(
       res => {
-        console.log(res)
         this.clinic.photo = res['url']
         this.showButtonsForm = false;
       });
@@ -187,45 +173,22 @@ export class ClinicComponent implements OnInit {
   }
 
   public sendForms(){
-
     this.clinicService.updateClinic(this.updateForm.value, this.clinic.id).pipe(takeUntil(this.destroy$)).subscribe(
       (res: ClinicDto)=> {
-        console.log('RESPONSE UPDATE')
-        console.log(res)
         this.showButtonsForm = false;
         this.clinic = res
         this.toast.success('Update clinic', 'Successfully')
-
       }
     );
     if (this.uploadPhotoForm.get('file').value != null) {
       this.updatePhotoClinic();
-    } else {
-      console.log('NO UPLOAD PHOTO')
-    }
+    } 
 
   }
 
   public cancelUpdate() {
     this.inicializeForm();
     this.imageSrc = '';
-  }
-
-
-
-  public openModalUpdate(){
-    this.modalService.open(this.modalUpdate).result.then(
-
-      r => {
-        if (r === '1') { //confirm create    
-          
-          console.log('hello!!')
-        } else {
-          //dimiss create
-          this.modalService.dismissAll()
-        }
-      }
-    );
   }
 
   onFileChange(event) {
@@ -235,14 +198,11 @@ export class ClinicComponent implements OnInit {
       const [file] = event.target.files;
       this.uploadPhotoForm.get('file').setValue(file)
 
-
       reader.readAsDataURL(file);
       reader.onload = () => {
         this.imageSrc = reader.result as string;
         this.showButtonsForm = true;
       };
-
-
     }
   }
 

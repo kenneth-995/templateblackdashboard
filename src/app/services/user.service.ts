@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Subject, BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 import { User } from '../models/entities/user-model';
@@ -16,11 +15,9 @@ import { CreateSpecialistDto } from 'src/app/models/dto/user/CreateSpecialistDto
   providedIn: 'root'
 })
 export class UserService {
-  //public userLogged: BehaviorSubject<User>
   public userLogged: User;
   public base_url = environment.BASE_URL;
 
-  
   constructor(private htttClient: HttpClient, private router: Router) { }
 
   login(formData: UserLoginDto) {

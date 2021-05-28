@@ -2,30 +2,17 @@
   <div class=" row">
     <div class=" col-md-12">
       <div class=" card">
-        <!-- <div class=" card-header">
-          <h4 class=" card-title">Specialists Table</h4>
-        </div> -->
         <div class="card-body">
-
           <div class="">
-
-
-
-
-
             <div class="row my-2 mx-1">
               <button type="button" class="btn btn-primary" (click)='openModalCreateNewSpecialist()'> Add Specialist &#43;</button>
             </div>
-
             <h4>Filters</h4>
             <div class="row my-2 ">
-
               <div class="col-2 text-center">
                 Name <input class="form-control" type="text" placeholder="find by name" #name
                   (keyup)="findByParams(name.value)">
               </div>
-             
-
 
               <div class="col-2 text-center" *ngIf="roleUser === 1">
                 Clinic
@@ -35,16 +22,9 @@
                   <option *ngFor="let c of clinics" [value]="c.id" class="text-dark">{{c.name}}</option>
                 </select>
               </div>
-
             </div>
-
-
           </div>
-
-
-
         </div>
-
 
         <div class=" card-body">
           <div class=" table-responsive">
@@ -77,7 +57,8 @@
                   </td>
                   <td>{{s.clinicId}}</td>
                   <td><button class="btn btn-danger" (click)='openModalDeleteSpecialist(s.id, i)'
-                          [disabled]="userLogged.id === s.id"><i class="far fa-trash-alt"></i></button></td>
+                          [disabled]="userLogged.id === s.id"><i class="far fa-trash-alt"></i></button>
+                  </td>
                       
               </tr>
               </tbody>
@@ -89,7 +70,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -123,7 +103,6 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-
 
     <form [formGroup]="createSpecialistForm" (ngSubmit)="submitFormCreate()">
 
@@ -241,6 +220,5 @@
     <div class="modal-footer" *ngIf="!showButtonsForm">
       <span style="color: red;">{{messageForm}}</span>
     </div>
-
   </div>
 </ng-template>

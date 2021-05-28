@@ -42,27 +42,30 @@
               <div class="col-md-4 pl-md-1">
                 <div class="form-group">
                   <label for="phone">Phone </label>
-                  <input class="form-control" placeholder="Hphone number" type="text" formControlName="phone" name="phone" id="phone" />
+                  <input class="form-control" placeholder="Hphone number" type="text" formControlName="phone"
+                    name="phone" id="phone" />
                 </div>
               </div>
             </div>
 
             <div class="row">
-              
+
             </div>
 
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group" *ngIf="roleUser != 1">
                   <label for="specialistType">Specialist Type</label>
-                  <input class="form-control" placeholder="Specialist type" type="text" formControlName="specialistType" name="specialistType" id="specialistType" />
+                  <input class="form-control" placeholder="Specialist type" type="text" formControlName="specialistType"
+                    name="specialistType" id="specialistType" />
                 </div>
               </div>
 
               <div class="col-md-6">
                 <div class="form-group" *ngIf="roleUser != 1">
                   <label for="collegiateNumber">Colegiate Number </label>
-                    <input class="form-control" placeholder="Colegiate number" type="text" formControlName="collegiateNumber" name="collegiateNumber" id="collegiateNumber" />
+                  <input class="form-control" placeholder="Colegiate number" type="text"
+                    formControlName="collegiateNumber" name="collegiateNumber" id="collegiateNumber" />
                 </div>
               </div>
             </div>
@@ -70,53 +73,20 @@
 
             <div class="row">
               <div class="col-md-6">
-                <div class="form-group" *ngIf="roleUser == 2">
-                  <label for="isAdminRole">Role admin</label>
-                  <input class="form-control" type="checkbox" name="isAdminRole" id="isAdminRole" formControlName="isAdminRole">
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="form-group" *ngIf="roleUser != 1">
-                  <label for="active"> Uncheck and save to delete your account </label>
-                  <input class="form-control" type="checkbox" formControlName="active" name="active" id="active">
-                </div>
-              </div>
-            </div>
-
-
-
-            <!-- <div class="row">
-
-              <div class="col-md-6 pl-md-1">
                 <div class="form-group" *ngIf="roleUser == 2">
                   <label for="isAdminRole">Role admin</label>
                   <input class="form-control" type="checkbox" name="isAdminRole" id="isAdminRole"
                     formControlName="isAdminRole">
                 </div>
               </div>
-            </div>
 
-            <div class="row">
-              <div class="col-md-6 pl-md-1">
+              <div class="col-md-6">
                 <div class="form-group" *ngIf="roleUser != 1">
                   <label for="active"> Uncheck and save to delete your account </label>
                   <input class="form-control" type="checkbox" formControlName="active" name="active" id="active">
                 </div>
               </div>
-            </div> -->
-
-            <!-- <div class="row">
-              <div class="col-md-6 pr-md-1">
-                <div class="form-group">
-
-                </div>
-              </div>
-
-            </div> -->
-
-
-
+            </div>
           </form>
 
         </div>
@@ -142,10 +112,7 @@
             <div class="block block-four"></div>
 
             <img [src]="userLogged.photoUrl" *ngIf="!previewImageStr" class="avatar" alt="avatar">
-
             <img [src]="previewImageStr" *ngIf="previewImageStr" class="avatar" [alt]="userLogged.name">
-
-
 
           </div>
           <div class="card-description">
@@ -158,13 +125,12 @@
                 accept="image/png, image/gif, image/jpeg">
             </form>
 
-            <label class="btn btn-secondary btn-block mt-3 text-white" style="font-size : 20px;" (click)="openModalPassword()">
+            <label class="btn btn-secondary btn-block mt-3 text-white" style="font-size : 20px;"
+              (click)="openModalPassword()">
               Change Password
             </label>
-
           </div>
         </div>
-        
       </div>
     </div>
   </div>
@@ -206,19 +172,17 @@
 
     <form [formGroup]="updatePasswordForm" class="modal-body">
       <label for="oldPassword" class="col-6"><strong>Your password</strong></label>
-      <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark" type="password" id="oldPassword" name="oldPassword"
-        formControlName="oldPassword"><br>
+      <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark" type="password" id="oldPassword"
+        name="oldPassword" formControlName="oldPassword"><br>
 
       <label for="newPassword" class="col-6"><strong>Your new password</strong></label>
-      <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark" type="password" id="newPassword" name="newPassword"
-        formControlName="newPassword"><br>
+      <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark" type="password" id="newPassword"
+        name="newPassword" formControlName="newPassword"><br>
 
       <label for="newPassword2" class="col-6"><strong>Repeat new password</strong></label>
-      <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark" type="password" id="newPassword2" name="newPassword2"
-        formControlName="newPassword2"><br>
-
+      <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark" type="password" id="newPassword2"
+        name="newPassword2" formControlName="newPassword2"><br>
     </form>
-
 
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modal.close('0')">Discart</button>

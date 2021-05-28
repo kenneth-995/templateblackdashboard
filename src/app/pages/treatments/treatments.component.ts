@@ -60,7 +60,6 @@ export class TreatmentsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log('hello treatments component ngOnInit()')
     if (this.userService.userLogged != null) {
       this.userLogged = this.userService.userLogged;
     } else {
@@ -86,7 +85,6 @@ export class TreatmentsComponent implements OnInit {
       (res: number) => {
         this.roleUser = res;
         if (res === 1) {
-          console.log('role superadmin')
           this.getAllTreatments();
           this.getAllUsers();
           this.getAllPatients();
@@ -296,11 +294,8 @@ export class TreatmentsComponent implements OnInit {
         else {
           this.showButtonsForm = false;
         }
-        
       }
     );
-
-
   }
 
   private inicializeFormWithTreatment(treatment: TreatmentDto) {
@@ -408,27 +403,18 @@ export class TreatmentsComponent implements OnInit {
   //FILTERING
   public findByParams(name: string, min: number, max: number, nameSpecialist: string, mindate:Date, maxdate:Date) {
     this.treatments = this.treatmentsAux;
-    console.log(mindate)
-    console.log(maxdate)
 
     if (name) {
-      console.log('name')
       this.treatments = this.treatments.filter(
         treatment => treatment.patientFullName.toLowerCase().includes(name.toLowerCase()));
-
-      //this.treatments.sort((a, b) => (a.name > b.name ? -1 : 1));
     }
 
     if (min && min >= 0 && min <= 100) {
-      console.log('min')
       this.treatments = this.treatments.filter(treatment => treatment.patientAge >= min);
-      //this.treatments.sort((a, b) => (a.age > b.age ? -1 : 1));
     }
 
     if (max && max >= 0 && max <= 100) {
-      console.log('max')
       this.treatments = this.treatments.filter(treatment => treatment.patientAge <= max);
-      //this.treatments.sort((a, b) => (a.age > b.age ? -1 : 1));
     }
 
     if(nameSpecialist) {

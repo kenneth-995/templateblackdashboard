@@ -11,8 +11,6 @@ export class UploadFileService {
 
   constructor(private htttClient: HttpClient) { }
 
-
-
   public uploadFilePatient(formFile, id: number) {
 
     const header = {

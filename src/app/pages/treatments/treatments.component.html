@@ -2,234 +2,220 @@
   <div class=" row">
     <div class=" col-md-12">
       <div class=" card">
-        <!-- <div class=" card-header">
-          <h4 class=" card-title">Treatments Table</h4>
-        </div> -->
 
         <!-- BOTTONS FILTERING AND SEARCHING -->
         <div class="card-body">
-
-
           <div class="">
             <div class="row my-2 mx-1">
               <button type="button" class="btn btn-primary" (click)='openModalCreate()'>Add Treatment &#43;</button>
+            </div>
+            <h4>Filters</h4>
+            <div class="row my-2 ">
+
+              <div class="col-2 text-center">
+                Name Patient <input class="form-control" type="text" placeholder="find by name" #name
+                  (keyup)="findByParams(name.value, minage.value, maxage.value, nameSpecialist.value, mindate.value, maxdate.value)">
+              </div>
+
+              <div class="col-2 text-center">
+                Min age <input class="form-control" type="number" placeholder="find min age" #minage
+                  (change)="findByParams(name.value, minage.value, maxage.value, nameSpecialist.value, mindate.value, maxdate.value)">
+              </div>
+
+              <div class="col-2 text-center">
+                Max age <input class="form-control" type="number" placeholder="find max age" #maxage
+                  (change)="findByParams(name.value, minage.value, maxage.value, nameSpecialist.value, mindate.value, maxdate.value)">
+              </div>
+
+              <div class="col-2 text-center">
+                Name Specialist <input class="form-control" type="text" placeholder="find by name" #nameSpecialist
+                  (keyup)="findByParams(name.value, minage.value, maxage.value, nameSpecialist.value, mindate.value, maxdate.value)">
+              </div>
+
+              <div class="col-2 text-center">
+                Min date <input class="form-control" type="date" placeholder="find by name" #mindate
+                  (change)="findByParams(name.value, minage.value, maxage.value, nameSpecialist.value, mindate.value, maxdate.value)">
+              </div>
+              <div class="col-2 text-center">
+                Max date <input class="form-control" type="date" placeholder="find by name" #maxdate
+                  (change)="findByParams(name.value, minage.value, maxage.value, nameSpecialist.value, mindate.value, maxdate.value)">
+              </div>
+            </div>
+
+            <h4>Ordering</h4>
+            <div class="row my-1">
+              <div class="col-2 text-center">
+                <button type="button" class="btn btn-info my-3" style="font-size: 11px;"
+                  (click)='orderByPatientName("desc")'>
+                  Name&nbsp; <i class="tim-icons icon-minimal-up"></i>
+                </button>
+              </div>
+              <div class="col-2 text-center">
+                <button type="button" class="btn btn-info my-3" style="font-size: 11px;"
+                  (click)='orderByPatientName("asc")'>
+                  Name &nbsp; <i class="tim-icons icon-minimal-down"></i>
+                </button>
+              </div>
+              <div class="col-2 text-center">
+                <button type="button" class="btn btn-info my-3" style="font-size: 11px;"
+                  (click)='orderByPatientAge("desc")'>
+                  Age&nbsp; <i class="tim-icons icon-minimal-up"></i>
+                </button>
+              </div>
+              <div class="col-2 text-center">
+                <button type="button" class="btn btn-info my-3" style="font-size: 11px;"
+                  (click)='orderByPatientAge("asc")'>
+                  Age &nbsp; <i class="tim-icons icon-minimal-down"></i>
+                </button>
+              </div>
+              <div class="col-2 text-center">
+                <button type="button" class="btn btn-info my-3" style="font-size: 11px;" (click)='orderByDate("desc")'>
+                  Date&nbsp; <i class="tim-icons icon-minimal-up"></i>
+                </button>
+              </div>
+              <div class="col-2 text-center">
+                <button type="button" class="btn btn-info my-3" style="font-size: 11px;"
+                  (click)='orderByDate("asc")'>Date
+                  &nbsp; <i class="tim-icons icon-minimal-down"></i>
+                </button>
+              </div>
+
+
+            </div>
+
           </div>
-          <h4>Filters</h4>
-          <div class="row my-2 ">
-            
-            <div class="col-2 text-center">
-              Name Patient <input class="form-control" type="text" placeholder="find by name" #name
-                (keyup)="findByParams(name.value, minage.value, maxage.value, nameSpecialist.value, mindate.value, maxdate.value)">
-            </div>
-        
-            <div class="col-2 text-center">
-              Min age <input class="form-control" type="number" placeholder="find min age" #minage
-                (change)="findByParams(name.value, minage.value, maxage.value, nameSpecialist.value, mindate.value, maxdate.value)">
-            </div>
-        
-            <div class="col-2 text-center">
-              Max age <input class="form-control" type="number" placeholder="find max age" #maxage
-                (change)="findByParams(name.value, minage.value, maxage.value, nameSpecialist.value, mindate.value, maxdate.value)">
-            </div>
-        
-            <div class="col-2 text-center">
-              Name Specialist <input class="form-control" type="text" placeholder="find by name" #nameSpecialist
-                (keyup)="findByParams(name.value, minage.value, maxage.value, nameSpecialist.value, mindate.value, maxdate.value)">
-            </div>
-        
-            <div class="col-2 text-center">
-              Min date <input class="form-control" type="date" placeholder="find by name" #mindate
-                (change)="findByParams(name.value, minage.value, maxage.value, nameSpecialist.value, mindate.value, maxdate.value)">
-            </div>
-            <div class="col-2 text-center">
-              Max date <input class="form-control" type="date" placeholder="find by name" #maxdate
-                (change)="findByParams(name.value, minage.value, maxage.value, nameSpecialist.value, mindate.value, maxdate.value)">
-            </div>
-          </div>
-        
-          <h4>Ordering</h4>
-          <div class="row my-1">
-            <div class="col-2 text-center">
-              <button type="button" class="btn btn-info my-3" style="font-size: 11px;" (click)='orderByPatientName("desc")'>
-                Name&nbsp; <i class="tim-icons icon-minimal-up"></i>
-              </button>
-            </div>
-            <div class="col-2 text-center">
-              <button type="button" class="btn btn-info my-3" style="font-size: 11px;" (click)='orderByPatientName("asc")'>
-                Name &nbsp; <i class="tim-icons icon-minimal-down"></i>
-              </button>
-            </div>
-            <div class="col-2 text-center">
-              <button type="button" class="btn btn-info my-3" style="font-size: 11px;" (click)='orderByPatientAge("desc")'>
-                Age&nbsp; <i class="tim-icons icon-minimal-up"></i>
-              </button>
-            </div>
-            <div class="col-2 text-center">
-              <button type="button" class="btn btn-info my-3" style="font-size: 11px;" (click)='orderByPatientAge("asc")'>
-                Age &nbsp; <i class="tim-icons icon-minimal-down"></i>
-              </button>
-            </div>
-            <div class="col-2 text-center">
-              <button type="button" class="btn btn-info my-3" style="font-size: 11px;" (click)='orderByDate("desc")'>
-                Date&nbsp; <i class="tim-icons icon-minimal-up"></i>
-              </button>
-            </div>
-            <div class="col-2 text-center">
-              <button type="button" class="btn btn-info my-3" style="font-size: 11px;" (click)='orderByDate("asc")'>Date
-                &nbsp; <i class="tim-icons icon-minimal-down"></i>
-              </button>
-            </div>
-            
-
-          </div> 
-
-        </div>
 
 
-        <!-- TABLE DATA -->
-        <div class=" card-body">
-          <div class=" table-responsive">
+          <!-- TABLE DATA -->
+          <div class=" card-body">
+            <div class=" table-responsive">
               <table class="table table-striped">
-    <thead>
-      <tr class="text-center">
-        <th scope="col">#</th>
-        <th scope="col">Patient name</th>
-        <th scope="col">Start Date</th>
-        <th scope="col">Sessions Finshed</th>
-        <th scope="col">Patient Age</th>
-        <th scope="col">Specialist name</th>
-        <th scope="col">Specialist type</th>
-        <th scope="col">Detail</th>
-        <th scope="col" *ngIf='roleUser ===1 || roleUser===2'>Action</th>
+                <thead>
+                  <tr class="text-center">
+                    <th scope="col">#</th>
+                    <th scope="col">Patient name</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">Sessions Finshed</th>
+                    <th scope="col">Patient Age</th>
+                    <th scope="col">Specialist name</th>
+                    <th scope="col">Specialist type</th>
+                    <th scope="col">Detail</th>
+                    <th scope="col" *ngIf='roleUser ===1 || roleUser===2'>Action</th>
 
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor='let t of treatments let idx = index' scope="row" class="text-center">
-        <td>{{idx+1}}</td>
-        <td>{{t.patientFullName}}</td>
-        <td>{{t.startDate}}</td>
-        <td>{{t.sessionsFinished}}</td>
-        <td>{{t.patientAge}}</td>
-        <td>{{t.specialistFullName}}</td>
-        <td>{{t.specialistType}}</td>
-        <td><button class="btn btn-primary" (click)='openModalEdit(t, idx)'><i class="fas fa-pencil-alt"></i></button></td>
-        <td *ngIf='roleUser ===1 || roleUser===2'><button class="btn btn-danger"
-            (click)='openModalDelete(t, idx)'><i class="far fa-trash-alt"></i></button></td>
-      </tr>
-    </tbody>
-    <div class="text-center">
-      <p *ngIf="!isTreatments" style="color: white;">Treatments not found</p>
-    </div>
-  </table>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor='let t of treatments let idx = index' scope="row" class="text-center">
+                    <td>{{idx+1}}</td>
+                    <td>{{t.patientFullName}}</td>
+                    <td>{{t.startDate}}</td>
+                    <td>{{t.sessionsFinished}}</td>
+                    <td>{{t.patientAge}}</td>
+                    <td>{{t.specialistFullName}}</td>
+                    <td>{{t.specialistType}}</td>
+                    <td><button class="btn btn-primary" (click)='openModalEdit(t, idx)'><i
+                          class="fas fa-pencil-alt"></i></button></td>
+                    <td *ngIf='roleUser ===1 || roleUser===2'><button class="btn btn-danger"
+                        (click)='openModalDelete(t, idx)'><i class="far fa-trash-alt"></i></button></td>
+                  </tr>
+                </tbody>
+                <div class="text-center">
+                  <p *ngIf="!isTreatments" style="color: white;">Treatments not found</p>
+                </div>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
   </div>
-</div>
 
 
-
-<ng-template #modalDelete let-modal>
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title">Delete Treatment</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-        (click)="modal.close('Cerrado desde la ventana')">
-        <span aria-hidden="true">&times;</span>
-      </button>
+  <ng-template #modalDelete let-modal>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Treatment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="modal.close('Cerrado desde la ventana')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        You're going to delete a treatment, are you sure?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modal.close('0')">No</button>
+        <button type="button" class="btn btn-danger" (click)="modal.close('1')">Yes</button>
+      </div>
     </div>
-    <div class="modal-body">
-      You're going to delete a treatment, are you sure?
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modal.close('0')">No</button>
-      <button type="button" class="btn btn-danger" (click)="modal.close('1')">Yes</button>
-    </div>
-  </div>
-</ng-template>
+  </ng-template>
 
-<ng-template #updateCreate let-modal>
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title">{{textModal}} Treatment</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-        (click)="modal.close('Cerrado desde la ventana')">
-        <span aria-hidden="true">&times;</span>
-      </button>
+  <ng-template #updateCreate let-modal>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{textModal}} Treatment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="modal.close('Cerrado desde la ventana')">
+          <span aria-hidden="true">&times;</span>
+        </button>
 
-    </div>
+      </div>
 
       <form [formGroup]="createUpdateForm" (ngSubmit)="createUpdateTreatment()">
-        
-          <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
-            <label for="sessionsFinished" class="col-2">Sessions Finished:</label>
-            <input class="form-control rounded-sm border-1 shadow-sm px-4 text-dark" 
-                   id="sessionsFinished" 
-                   name="sessionsFinished"
-                   type="number"
-                   formControlName="sessionsFinished" />
-          </div>
 
-          <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
-            <label for="startDate" class="col-2">Start Date:</label>
-            <input class="form-control rounded-sm border-1 shadow-sm px-4 text-dark" 
-                   id="startDate" 
-                   name="startDate"
-                   type="date"
-                   formControlName="startDate" />
-          </div>
+        <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+          <label for="sessionsFinished" class="col-2">Sessions Finished:</label>
+          <input class="form-control rounded-sm border-1 shadow-sm px-4 text-dark" id="sessionsFinished"
+            name="sessionsFinished" type="number" formControlName="sessionsFinished" />
+        </div>
+
+        <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+          <label for="startDate" class="col-2">Start Date:</label>
+          <input class="form-control rounded-sm border-1 shadow-sm px-4 text-dark" id="startDate" name="startDate"
+            type="date" formControlName="startDate" />
+        </div>
 
 
-          <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
-            <label for="active" class="col-2">Patient:</label>
-            <select class="form-control text-dark" formControlName="patientId">
-              <option *ngFor="let p of patients" [value]="p.id" class="text-dark">
-                  {{p.name + ' ' + p.surname}}
-              </option>
-            </select>
-          </div>
+        <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+          <label for="active" class="col-2">Patient:</label>
+          <select class="form-control text-dark" formControlName="patientId">
+            <option *ngFor="let p of patients" [value]="p.id" class="text-dark">
+              {{p.name + ' ' + p.surname}}
+            </option>
+          </select>
+        </div>
 
-          <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
-            <label for="userId" class="col-2">Specialist:</label>
-            <select class="form-control text-dark" formControlName="userId" id="userId" name="userId" [disabled]="this.roleUser===3">
-              
-              <option *ngFor="let s of specialists" [value]="s.id" class="text-dark">
-                  {{s.name + ' ' + s.surnames}}
-              </option>
-            </select>
-          </div>
+        <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+          <label for="userId" class="col-2">Specialist:</label>
+          <select class="form-control text-dark" formControlName="userId" id="userId" name="userId"
+            [disabled]="this.roleUser===3">
 
-          <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
-            <label for="reasonTreatment" class="col-2">Reason Treatment:</label>
-            <textarea class="form-control rounded-sm border-1 shadow-sm px-4 text-dark" rows="6"
-                      type="text" 
-                      id="reasonTreatment" 
-                      name="reasonTreatment"
-                      formControlName="reason"
-                      placeholder="Reason of treatment is ...">
+            <option *ngFor="let s of specialists" [value]="s.id" class="text-dark">
+              {{s.name + ' ' + s.surnames}}
+            </option>
+          </select>
+        </div>
+
+        <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+          <label for="reasonTreatment" class="col-2">Reason Treatment:</label>
+          <textarea class="form-control rounded-sm border-1 shadow-sm px-4 text-dark" rows="6" type="text"
+            id="reasonTreatment" name="reasonTreatment" formControlName="reason"
+            placeholder="Reason of treatment is ...">
             </textarea>
-          </div>
-
-
+        </div>
       </form>
 
-    
 
-      <!-- TODO: ngIf not work -->
-    <div class="modal-footer" *ngIf="showButtonsForm">
-      <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="modal.close('1')">
-        Save&nbsp; <i class=" tim-icons icon-send"></i>
-      </button>
-      <button type="button" class="btn btn-secondary" (click)="modal.close('0')">
-        Cancel&nbsp; <i class=" tim-icons icon-simple-remove"></i>
-      </button>
+      <div class="modal-footer" *ngIf="showButtonsForm">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="modal.close('1')">
+          Save&nbsp; <i class=" tim-icons icon-send"></i>
+        </button>
+        <button type="button" class="btn btn-secondary" (click)="modal.close('0')">
+          Cancel&nbsp; <i class=" tim-icons icon-simple-remove"></i>
+        </button>
+      </div>
     </div>
 
-  </div>
+    <br>
 
-<br>
-
-</ng-template>
+  </ng-template>

@@ -1,231 +1,136 @@
 <div class=" content">
-    <div class=" row">
-      <div class=" col-md-12">
-        <div class=" card">
-          <!-- <div class=" card-header">
-            <h4 class=" card-title">Clinics Table</h4>
-          </div> -->
-  
-          <!-- BOTTONS FILTERING AND SEARCHING -->
-          <div class="card-body">
-  
-  
-            <div class="">
-              <div class="row my-2 mx-1">
-                <button type="button" class="btn btn-primary" (click)='openModalCreateClinic()'> Add Clinic &#43;</button>
+  <div class=" row">
+    <div class=" col-md-12">
+      <div class=" card">
+        <!-- BOTTONS FILTERING AND SEARCHING -->
+        <div class="card-body">
+          <div class="">
+            <div class="row my-2 mx-1">
+              <button type="button" class="btn btn-primary" (click)='openModalCreateClinic()'> Add Clinic &#43;</button>
             </div>
-
-
-            <!-- <h4>Filters</h4>
-            <div class="row my-2 ">
-              
-              <div class="col-2 text-center">
-                Name Patient <input class="form-control" type="text" placeholder="find by name" #name
-                  (keyup)="findByParams(name.value, minage.value, maxage.value, nameSpecialist.value, mindate.value, maxdate.value)">
-              </div>
-          
-              <div class="col-2 text-center">
-                Min age <input class="form-control" type="number" placeholder="find min age" #minage
-                  (change)="findByParams(name.value, minage.value, maxage.value, nameSpecialist.value, mindate.value, maxdate.value)">
-              </div>
-          
-              <div class="col-2 text-center">
-                Max age <input class="form-control" type="number" placeholder="find max age" #maxage
-                  (change)="findByParams(name.value, minage.value, maxage.value, nameSpecialist.value, mindate.value, maxdate.value)">
-              </div>
-          
-              <div class="col-2 text-center">
-                Name Specialist <input class="form-control" type="text" placeholder="find by name" #nameSpecialist
-                  (keyup)="findByParams(name.value, minage.value, maxage.value, nameSpecialist.value, mindate.value, maxdate.value)">
-              </div>
-          
-              <div class="col-2 text-center">
-                Min date <input class="form-control" type="date" placeholder="find by name" #mindate
-                  (change)="findByParams(name.value, minage.value, maxage.value, nameSpecialist.value, mindate.value, maxdate.value)">
-              </div>
-              <div class="col-2 text-center">
-                Max date <input class="form-control" type="date" placeholder="find by name" #maxdate
-                  (change)="findByParams(name.value, minage.value, maxage.value, nameSpecialist.value, mindate.value, maxdate.value)">
-              </div>
-            </div>
-          
-            <h4>Ordering</h4>
-            <div class="row my-2">
-              <div class="col-2 text-center">
-                <button type="button" class="btn btn-primary my-3" style="font-size: 11px;" (click)='orderByPatientName("desc")'>
-                  Name&nbsp; <i class="tim-icons icon-minimal-up"></i>
-                </button>
-              </div>
-              <div class="col-2 text-center">
-                <button type="button" class="btn btn-primary my-3" style="font-size: 11px;" (click)='orderByPatientName("asc")'>
-                  Name &nbsp; <i class="tim-icons icon-minimal-down"></i>
-                </button>
-              </div>
-              <div class="col-2 text-center">
-                <button type="button" class="btn btn-primary my-3" style="font-size: 11px;" (click)='orderByPatientAge("desc")'>
-                  Age&nbsp; <i class="tim-icons icon-minimal-up"></i>
-                </button>
-              </div>
-              <div class="col-2 text-center">
-                <button type="button" class="btn btn-primary my-3" style="font-size: 11px;" (click)='orderByPatientAge("asc")'>
-                  Age &nbsp; <i class="tim-icons icon-minimal-down"></i>
-                </button>
-              </div>
-              <div class="col-2 text-center">
-                <button type="button" class="btn btn-primary my-3" style="font-size: 11px;" (click)='orderByDate("desc")'>
-                  Date&nbsp; <i class="tim-icons icon-minimal-up"></i>
-                </button>
-              </div>
-              <div class="col-2 text-center">
-                <button type="button" class="btn btn-primary my-3" style="font-size: 11px;" (click)='orderByDate("asc")'>Date
-                  &nbsp; <i class="tim-icons icon-minimal-down"></i>
-                </button>
-              </div>-->
-              
-  
-            </div>  
-  
           </div>
-  
-  
-          <!-- TABLE DATA -->
-          <div class=" card-body">
-            <div class=" table-responsive">
-                <table class="table table-striped">
-      <thead>
-        <tr class="text-center">
-            <th scope="col">#</th>
-            <th scope="col">Photo</th>
-            <th scope="col">Name</th>
-            <th scope="col">Address</th>
-            <th scope="col">email</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Action</th>
-            <th scope="col" *ngIf='roleUser ===1'>Action</th>
-  
-        </tr>
-      </thead>
-      <tbody *ngIf="clinics">
-        <tr *ngFor='let c of clinics let i = index' scope="row" class="text-center">
-            <td>{{i+1}}</td>
-            <td><img [src]="c.photo" style="width: 30px; height: 30px; border-radius: 100%;" [alt]="c.name"></td>
-            <td>{{c.name}}</td>
-            <td>{{c.address}}</td>
-            <td>{{c.email}}</td>
-            <td>{{c.phoneNumber}}</td>
-            <td><button class="btn btn-primary" (click)='openModalEditClinic(c, i)'>Edit</button></td>
-            <td *ngIf='roleUser ===1'><button class="btn btn-danger"
-                    (click)='openModalDeleteClinic(c.id, i)'>Delete</button></td>
-        </tr>
-    </tbody>
+        </div>
 
-      <!-- <div class="text-center">
-        <p *ngIf="!isTreatments" style="color: white;">Treatments not found</p>
-      </div> -->
-    </table>
-            </div>
+        <!-- TABLE DATA -->
+        <div class=" card-body">
+          <div class=" table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr class="text-center">
+                  <th scope="col">#</th>
+                  <th scope="col">Photo</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">email</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Action</th>
+                  <th scope="col" *ngIf='roleUser ===1'>Action</th>
+
+                </tr>
+              </thead>
+              <tbody *ngIf="clinics">
+                <tr *ngFor='let c of clinics let i = index' scope="row" class="text-center">
+                  <td>{{i+1}}</td>
+                  <td><img [src]="c.photo" style="width: 30px; height: 30px; border-radius: 100%;" [alt]="c.name"></td>
+                  <td>{{c.name}}</td>
+                  <td>{{c.address}}</td>
+                  <td>{{c.email}}</td>
+                  <td>{{c.phoneNumber}}</td>
+                  <td><button class="btn btn-primary" (click)='openModalEditClinic(c, i)'>Edit</button></td>
+                  <td *ngIf='roleUser ===1'><button class="btn btn-danger"
+                      (click)='openModalDeleteClinic(c.id, i)'>Delete</button></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
-  
     </div>
   </div>
-  
-  
-  
-  <ng-template #modalDelete let-modal>
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title">Delete Clinic</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                (click)="modal.close('Cerrado desde la ventana')">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            You are going to delete a clinic, the users associated with this clinic will no longer have access to their
-            account, are you sure?
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modal.close('0')">No</button>
-            <button type="button" class="btn btn-danger" (click)="modal.close('1')">Yes</button>
-        </div>
+</div>
+
+
+<ng-template #modalDelete let-modal>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Delete Clinic</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+        (click)="modal.close('Cerrado desde la ventana')">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <div class="modal-body">
+      You are going to delete a clinic, the users associated with this clinic will no longer have access to their
+      account, are you sure?
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modal.close('0')">No</button>
+      <button type="button" class="btn btn-danger" (click)="modal.close('1')">Yes</button>
+    </div>
+  </div>
 </ng-template>
 
 
 <ng-template #modalCreateEdit let-modal>
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title">{{textCreateUpdateModal}} Clinic</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modal.close('0')">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-
-        <div *ngIf="!isCreated">
-            <div class="modal-body"
-                style="display:flex; flex-direction: row; justify-content: center; align-items: center">
-                <!-- Image Preview -->
-                <img [src]="imageSrc" *ngIf="imageSrc" style="width: 150px; height: 150px; border-radius: 100%;">
-            </div>
-
-            <form [formGroup]="uploadPhotoForm" (ngSubmit)="uploadPhoto()" class="modal-body"
-                style="display:flex; flex-direction: row; justify-content: center; align-items: center">
-                <label for="uploadPhoto" class="col-2">Photo:</label>
-                <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark " type="file" id="uploadPhoto"
-                    name="uploadPhoto" (change)="onFileChange($event)">
-            </form>
-        </div>
-        <form [formGroup]="createUpdateForm" (ngSubmit)="submitFormCreate()">
-
-            <div class="modal-body"
-                style="display:flex; flex-direction: row; justify-content: center; align-items: center">
-                <label for="nameCreate" class="col-2">Name:</label>
-                <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark" id="nameCreate" name="name" type="text"
-                    formControlName='name' />
-            </div>
-
-            <div class="modal-body"
-                style="display:flex; flex-direction: row; justify-content: center; align-items: center">
-                <label for="address" class="col-2">Address:</label>
-                <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark" id="address" name="address" type="text"
-                    formControlName='address' />
-            </div>
-
-            <div class="modal-body"
-                style="display:flex; flex-direction: row; justify-content: center; align-items: center">
-                <label for="phoneCreate" class="col-2">Phone Number:</label>
-                <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark" id="phoneCreate" name="phoneCreate"
-                    type="text" formControlName='phoneNumber' />
-            </div>
-
-            <div class="modal-body"
-                style="display:flex; flex-direction: row; justify-content: center; align-items: center">
-                <label for="email" class="col-2">Email:</label>
-                <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark" id="email" name="email" type="text"
-                    formControlName='email' />
-            </div>
-
-
-
-        </form>
-
-        <div class="modal-footer" *ngIf="showButtonsForm">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                (click)="modal.close('1')">
-                Save&nbsp; <i class=" tim-icons icon-send"></i>
-              </button>
-            <button type="button" class="btn btn-primary" (click)="modal.close('0')">
-              Cancel&nbsp; <i class=" tim-icons icon-simple-remove"></i>
-            </button>
-        </div>
-        <div class="modal-footer" *ngIf="!showButtonsForm && isCreated">
-            <span style="color: red;">All fields is required</span>
-        </div>
-
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">{{textCreateUpdateModal}} Clinic</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modal.close('0')">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
 
+    <div *ngIf="!isCreated">
+      <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <!-- Image Preview -->
+        <img [src]="imageSrc" *ngIf="imageSrc" style="width: 150px; height: 150px; border-radius: 100%;">
+      </div>
 
+      <form [formGroup]="uploadPhotoForm" (ngSubmit)="uploadPhoto()" class="modal-body"
+        style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label for="uploadPhoto" class="col-2">Photo:</label>
+        <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark " type="file" id="uploadPhoto"
+          name="uploadPhoto" (change)="onFileChange($event)">
+      </form>
+    </div>
+    <form [formGroup]="createUpdateForm" (ngSubmit)="submitFormCreate()">
 
+      <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label for="nameCreate" class="col-2">Name:</label>
+        <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark" id="nameCreate" name="name" type="text"
+          formControlName='name' />
+      </div>
+
+      <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label for="address" class="col-2">Address:</label>
+        <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark" id="address" name="address" type="text"
+          formControlName='address' />
+      </div>
+
+      <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label for="phoneCreate" class="col-2">Phone Number:</label>
+        <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark" id="phoneCreate" name="phoneCreate"
+          type="text" formControlName='phoneNumber' />
+      </div>
+
+      <div class="modal-body" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+        <label for="email" class="col-2">Email:</label>
+        <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark" id="email" name="email" type="text"
+          formControlName='email' />
+      </div>
+
+    </form>
+
+    <div class="modal-footer" *ngIf="showButtonsForm">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modal.close('1')">
+        Save&nbsp; <i class=" tim-icons icon-send"></i>
+      </button>
+      <button type="button" class="btn btn-primary" (click)="modal.close('0')">
+        Cancel&nbsp; <i class=" tim-icons icon-simple-remove"></i>
+      </button>
+    </div>
+    <div class="modal-footer" *ngIf="!showButtonsForm && isCreated">
+      <span style="color: red;">All fields is required</span>
+    </div>
+  </div>
 </ng-template>

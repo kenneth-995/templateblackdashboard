@@ -17,7 +17,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 import { NgSelectModule } from '@ng-select/ng-select';
-import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight'; //npm i --save  @ng-select/ng-option-highlight
+import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
@@ -50,7 +50,7 @@ import { RegisterComponent } from './register/register.component';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthService,
-      multi: true, //Actua en todas las peticiones, en login no haria falta, pero tampoco afecta
+      multi: true,
     },
   ],
   bootstrap: [AppComponent]

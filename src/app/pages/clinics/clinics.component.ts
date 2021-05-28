@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy, ViewChild, TemplateRef } from '@angular/core';
-import { pipe, Subject, Subscription } from 'rxjs';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -12,7 +12,6 @@ import { UploadFileService } from 'src/app/services/upload-file.service';
 
 import { ClinicDto } from 'src/app/models/dto/clinic/ClinicDto'
 import { UpdateCreateClinicDto } from 'src/app/models/dto/clinic/UpdateCreateClinicDto'
-
 import { User } from 'src/app/models/entities/user-model';
 
 @Component({
@@ -58,16 +57,15 @@ export class ClinicsComponent implements OnInit {
   }
   ngOnInit(): void {
 
-    if (this.userService.userLogged != null) {
+    if (this.userService.userLogged != null) {//null if refresh browser
       this.userLogged = this.userService.userLogged;
     } else {
       console.log('[errorPatientComponent] user==null!');
-      console.log(this.userService.userLogged) //null if refresh browser
+      console.log(this.userService.userLogged) 
       this.userLogged = this.userService.getUserLocalStorage()
     }
 
     this.getData();
-    
 
     this.uploadPhotoForm = this.fb.group({
       file: null
@@ -88,17 +86,11 @@ export class ClinicsComponent implements OnInit {
       (res: number) => {
         this.roleUser = res;
         if (res === 1) {
-          console.log('role superadmin')
           this.getAllClinics();
-
-        } else if (res === 2 ||res === 3) {
-          console.log('role admin or user no deveria estar aqui')
-          //this.getClinic();
-
-        } else {
+        }  else {
           this.router.navigateByUrl('/login');
           this.userService.logout();
-          console.log('[ClinicComponent error] get role user !=1 !=2 =!3');
+          console.log('role admin or user no deveria estar aqui')
         }
       }
     );
@@ -150,7 +142,6 @@ export class ClinicsComponent implements OnInit {
     this.textCreateUpdateModal = 'Update ';
     this.imageSrc = clinic.photo;
 
-
     //set form data
     this.createUpdateForm.controls['id'].setValue(clinic.id);
     this.createUpdateForm.controls['name'].setValue(clinic.name);
@@ -173,17 +164,12 @@ export class ClinicsComponent implements OnInit {
             this.createUpdateForm.controls['name'].value != _name || 
             this.createUpdateForm.controls['address'].value != _address || 
             this.createUpdateForm.controls['phoneNumber'].value != _phoneNumber || 
-            this.createUpdateForm.controls['email'].value != _email /* || 
-            (this.uploadPhotoForm.get('file').value != null) */
+            this.createUpdateForm.controls['email'].value != _email 
           ) {
-            console.log( this.uploadPhotoForm.get('file').value)
-            console.log('form valid')
-            console.log(this.uploadPhotoForm.value)
+
             this.showButtonsForm = true;
         }
         else {
-          console.log('form novalid')
-            console.log(this.uploadPhotoForm.value)
           this.showButtonsForm = false;
         }
       }
@@ -201,11 +187,10 @@ export class ClinicsComponent implements OnInit {
     this.inicializeFormCreate();
     this.modalService.open(this.modalCreateEdit).result.then(
       r => {
-        if (r === '1') {
-          console.log('CONFIRM CREATE')
+        if (r === '1') { // CONFIRM CREATE
           this.createClinic(this.createUpdateForm.value);
         } else {
-          console.log('CANCEL CREATE')
+          // CANCEL CREATE
         }
       }
     );
@@ -216,7 +201,6 @@ export class ClinicsComponent implements OnInit {
   public openModalEditClinic(clinic:ClinicDto, idx:number) {
     //INICIALIZE FORM
     this.inicializeFormEdit(clinic, idx);
-    console.log(clinic)
     //OPEN MODAL
     this.modalService.open(this.modalCreateEdit).result.then(
       r => {
@@ -224,12 +208,13 @@ export class ClinicsComponent implements OnInit {
           console.log('CONFIRM EDITED')
           this.updateClinic(this.createUpdateForm.value, idx);
 
+          //SET CLINIC FILE
           if (this.uploadPhotoForm.get('file').value != null) {
             this.updatePhotoClinic(clinic, idx);
           }
 
         } else {
-          console.log('CANCEL EDITED')
+          //CANCEL EDITED
         }
       }
     );
@@ -238,11 +223,10 @@ export class ClinicsComponent implements OnInit {
   public openModalDeleteClinic(id:number, idx:number) {
     this.modalService.open(this.modalDelete).result.then(
       r => {
-        if (r === '1') {
-          console.log('CONFIRM DELETE')
+        if (r === '1') { //CONFIRM DELETE
           this.deteleClinic(id, idx)
         } else {
-          console.log('DISCARD DELETE')
+          //DISCARD DELETE
         }
       }
     );
@@ -287,7 +271,6 @@ export class ClinicsComponent implements OnInit {
   }
 
   private deteleClinic(id:number, idx:number) {
-    console.log('id: '+id + ' idx: ' + idx)
     this.clinicService.deleteClinic(id).pipe(takeUntil(this.destroy$)).subscribe(
       (res) => {
         this.clinics.splice(idx, 1);
@@ -296,20 +279,16 @@ export class ClinicsComponent implements OnInit {
     );
   }
 
-  onFileChange(event) {
+  public onFileChange(event) {
     const reader = new FileReader();
-
     if (event.target.files && event.target.files.length) {
       const [file] = event.target.files;
       this.uploadPhotoForm.get('file').setValue(file)
-
 
       reader.readAsDataURL(file);
       reader.onload = () => {
         this.imageSrc = reader.result as string;
       };
-
-
     }
   }
 
