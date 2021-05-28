@@ -3,16 +3,10 @@
   <div class=" row">
     <div class=" col-md-12">
       <div class=" card">
-        <!-- <div class=" card-header">
-          <h4 class=" card-title">Patients Table</h4>
-        </div> -->
+
         <div class="card-body">
 
           <div class="">
-
-
-
-
 
           <div class="row my-2 mx-1">
             <button type="button" class="btn btn-primary" (click)='openModalCreatePatientNew()'> Add Patient &#43;</button>
@@ -81,32 +75,12 @@
               </button>
             </div>
              
-            
           </div>
 
-
-
         </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
-
         </div>
-
 
         <div class=" card-body">
           <div class=" table-responsive">
@@ -136,6 +110,9 @@
                       (click)='deletePatient(p.id, i)'><i class="far fa-trash-alt"></i></button></td>
                 </tr>
               </tbody>
+              <div class="text-center">
+                <p *ngIf="!isPatients" style="color: rgb(242, 242, 242);">Patients not found</p>
+              </div>
             </table>
           </div>
         </div>
@@ -272,8 +249,12 @@
     </form>
 
     <div class="modal-footer" *ngIf="showButtonsForm">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modal.close('1')">Save</button>
-      <button type="button" class="btn btn-primary" (click)="modal.close('0')">Cancel</button>
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modal.close('1')">
+        Save&nbsp; <i class=" tim-icons icon-send"></i>
+      </button>
+      <button type="button" class="btn btn-primary" (click)="modal.close('0')">
+        Cancel&nbsp; <i class=" tim-icons icon-simple-remove"></i>
+      </button>
     </div>
     <div class="modal-footer" *ngIf="!showButtonsForm && isCreated">
       <span style="color: red;">All fields is required</span>

@@ -97,8 +97,12 @@
 
       <div class="modal-footer" *ngIf="showButtonsForm">
           <button type="button" class="btn btn-secondary" data-dismiss="modal"
-              (click)="modal.close('1')">Save</button>
-          <button type="button" class="btn btn-primary" (click)="modal.close('0')">Cancel</button>
+              (click)="modal.close('1')">
+              Save&nbsp; <i class=" tim-icons icon-send"></i>
+            </button>
+          <button type="button" class="btn btn-primary" (click)="modal.close('0')">
+            Cancel&nbsp; <i class=" tim-icons icon-simple-remove"></i>
+          </button>
       </div>
 
 
