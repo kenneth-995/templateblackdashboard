@@ -80,6 +80,7 @@ export class SpecialistsComponent implements OnInit {
             (res: User[]) => {
               this.specialists = res;
               this.specialistsAux = res;
+              this.isSpecialists = this.specialists.length>0;
             }
           );
 
@@ -97,6 +98,7 @@ export class SpecialistsComponent implements OnInit {
               (res: User[]) => {
                 this.specialists = res;
                 this.specialistsAux = res;
+                this.isSpecialists = this.specialists.length>0;
               }
             );
           this.clinicService.getClinic(this.userLogged.clinicId).pipe(takeUntil(this.destroy$)).subscribe(
