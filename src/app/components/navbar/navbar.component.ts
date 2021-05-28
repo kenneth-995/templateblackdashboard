@@ -4,7 +4,9 @@ import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
-import { UserService } from 'src/app/services/user.service'
+
+import { User } from 'src/app/models/entities/user-model';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: "app-navbar",
@@ -12,6 +14,7 @@ import { UserService } from 'src/app/services/user.service'
   styleUrls: ["./navbar.component.css"]
 })
 export class NavbarComponent implements OnInit, OnDestroy {
+
   private listTitles: any[];
   location: Location;
   mobile_menu_visible: any = 0;
@@ -21,6 +24,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
   public isCollapsed = true;
 
   closeResult: string;
+
+
+  public userLogged: User;
+  public roleUser: number;
+
 
   constructor(
     location: Location,
@@ -43,7 +51,19 @@ export class NavbarComponent implements OnInit, OnDestroy {
        navbar.classList.add('navbar-transparent');
      }
    };
+   
   ngOnInit() {
+    
+    if (this.userService.userLogged != null) {
+      this.userLogged = this.userService.userLogged;
+    } else {
+      console.log('[HeaderComponent] user==null!');
+      console.log(this.userService.userLogged) //null
+      this.userLogged = this.userService.getUserLocalStorage()
+    }
+
+
+
     window.addEventListener("resize", this.updateColor);
     this.listTitles = ROUTES.filter(listTitle => listTitle);
     const navbar: HTMLElement = this.element.nativeElement;
@@ -92,6 +112,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     this.sidebarVisible = true;
   }
+
   sidebarClose() {
     const html = document.getElementsByTagName("html")[0];
     this.toggleButton.classList.remove("toggled");
@@ -107,6 +128,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.sidebarVisible = false;
     html.classList.remove("nav-open");
   }
+
   sidebarToggle() {
     // const toggleButton = this.toggleButton;
     // const html = document.getElementsByTagName('html')[0];
@@ -181,6 +203,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   open(content) {
+    console.log('open(content) {')
     this.modalService.open(content, {windowClass: 'modal-search'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -197,6 +220,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       return  `with: ${reason}`;
     }
   }
+
   ngOnDestroy(){
      window.removeEventListener("resize", this.updateColor);
   }

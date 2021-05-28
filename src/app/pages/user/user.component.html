@@ -150,32 +150,21 @@
           </div>
           <div class="card-description">
             <form [formGroup]="fileForm">
-              <label for="uploadPhoto" class="btn btn-primary btn-block mt-3" style="font-size : 20px;">Change
-                Image</label>
+              <label for="uploadPhoto" class="btn btn-primary btn-block mt-3 text-white" style="font-size : 20px;">
+                Change Image
+              </label>
               <input class="form-control rounded-sm border-0 shadow-sm px-4" type="file" id="uploadPhoto"
                 name="uploadPhoto" (change)="onFileChange($event)" style="visibility:hidden;"
-                accept="image/png, image/gif, image/jpeg"><br>
-              <!-- <input class="form-control rounded-sm border-0 shadow-sm px-4" type="file" id="uploadPhoto"
-                        name="uploadPhoto" (change)="onFileChange($event)"> -->
+                accept="image/png, image/gif, image/jpeg">
             </form>
 
-            <button class="btn btn-block btn-success py-2" style="font-size : 20px;"
-              (click)="openModalPassword()">Change Password</button>
+            <label class="btn btn-secondary btn-block mt-3 text-white" style="font-size : 20px;" (click)="openModalPassword()">
+              Change Password
+            </label>
+
           </div>
         </div>
-        <!-- <div class="card-footer">
-                <div class="button-container">
-                    <button class="btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
-                        <i class="fab fa-facebook"> </i>
-                    </button>
-                    <button class="btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
-                        <i class="fab fa-twitter"> </i>
-                    </button>
-                    <button class="btn btn-icon btn-round btn-google" href="javascript:void(0)">
-                        <i class="fab fa-google-plus"> </i>
-                    </button>
-                </div>
-            </div> -->
+        
       </div>
     </div>
   </div>
@@ -217,15 +206,15 @@
 
     <form [formGroup]="updatePasswordForm" class="modal-body">
       <label for="oldPassword" class="col-6"><strong>Your password</strong></label>
-      <input class="form-control rounded-sm border-0 shadow-sm px-4" type="text" id="oldPassword" name="oldPassword"
+      <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark" type="password" id="oldPassword" name="oldPassword"
         formControlName="oldPassword"><br>
 
       <label for="newPassword" class="col-6"><strong>Your new password</strong></label>
-      <input class="form-control rounded-sm border-0 shadow-sm px-4" type="text" id="newPassword" name="newPassword"
+      <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark" type="password" id="newPassword" name="newPassword"
         formControlName="newPassword"><br>
 
       <label for="newPassword2" class="col-6"><strong>Repeat new password</strong></label>
-      <input class="form-control rounded-sm border-0 shadow-sm px-4" type="text" id="newPassword2" name="newPassword2"
+      <input class="form-control rounded-sm border-0 shadow-sm px-4 text-dark" type="password" id="newPassword2" name="newPassword2"
         formControlName="newPassword2"><br>
 
     </form>
@@ -233,7 +222,7 @@
 
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modal.close('0')">Discart</button>
-      <button type="button" class="btn btn-primary" (click)="modal.close('1')">Change Password</button>
+      <button type="button" class="btn btn-primary" (click)="modal.close('1')">Confirm</button>
     </div>
   </div>
 </ng-template>

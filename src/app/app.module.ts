@@ -36,6 +36,11 @@ import { RegisterComponent } from './register/register.component';
     RouterModule,
     AppRoutingModule,
     ToastrModule.forRoot(),
+    /* ToastrModule.forRoot({
+      timeOut: 5000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }), */
     NgSelectModule,
     NgOptionHighlightModule,
     NgxSpinnerModule
