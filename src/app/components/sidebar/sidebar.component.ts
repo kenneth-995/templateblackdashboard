@@ -8,7 +8,7 @@ import { User } from 'src/app/models/entities/user-model';
 declare interface RouteInfo {
   path: string;
   title: string;
-  rtlTitle: string;
+
   icon: string;
   class: string;
   role:number;
@@ -17,7 +17,6 @@ export const ROUTES: RouteInfo[] = [
   {
     path: "/dashboard",
     title: "Dashboard",
-    rtlTitle: "لوحة القيادة",
     icon: "icon-chart-pie-36",
     class: "",
     role: 3
@@ -25,7 +24,6 @@ export const ROUTES: RouteInfo[] = [
   {
     path: "/patients",
     title: "Patients",
-    rtlTitle: "الرموز",
     icon: "icon-atom",
     class: "",
     role: 3
@@ -33,60 +31,46 @@ export const ROUTES: RouteInfo[] = [
   {
     path: "/medicalsheet",
     title: "Medical Sheet",
-    rtlTitle: "خرائط",
-    icon: "icon-pin",
+    icon: "icon-calendar-60",
     class: "" ,
     role: 3
   },
   {
     path: "/treatments",
     title: "Treatments",
-    rtlTitle: "إخطارات",
-    icon: "icon-bell-55",
+    icon: "icon-sound-wave",
     class: "",
     role: 3
   },
-
-  /* {
-    path: "/user",
-    title: "User Profile",
-    rtlTitle: "ملف تعريفي للمستخدم",
-    icon: "icon-single-02",
-    class: ""
-  }, */
   {
     path: "/reports",
     title: "Reports",
-    rtlTitle: "قائمة الجدول",
-    icon: "icon-puzzle-10",
+    icon: "icon-notes",
     class: "",
     role: 3
   },
   {
     path: "/specialists",
     title: "Specialists",
-    rtlTitle: "طباعة",
-    icon: "icon-align-center",
+    icon: "icon-single-02",
     class: "",
     role: 2
-  },
-  {
-    path: "/clinics",
-    title: "Management clinics",
-    rtlTitle: "طباعة",
-    icon: "icon-align-center",
-    class: "",
-    role: 1
   }
 
   ,
   {
     path: "/clinic",
-    title: "Clinic",
-    rtlTitle: "طباعة",
-    icon: "icon-align-center",
+    title: "My Clinic",
+    icon: "icon-istanbul",
     class: "",
     role: 3
+  },
+  {
+    path: "/clinics",
+    title: "Management clinics",
+    icon: "icon-bank",
+    class: "",
+    role: 1
   }
   
 ];

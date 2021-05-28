@@ -21,13 +21,18 @@ export class RegisterComponent implements OnInit {
   public observableForm: Subscription = new Subscription();
 
   public msgEmail = '';
+  public msgEmailClinic = '';
   public msgPsswd = '';
+  public msgColegiateNumber = '';
+  
   public messageForm = 'all fields is required'
   public showButtonsForm: boolean = false;
 
   public formValid: boolean = false;
   public psswdValid: boolean = false;
   public emailValid: boolean = false;
+  public colegiateNumberValid: boolean = false;
+  public colegiateNumberLengthValid: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -38,7 +43,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
 
     this.registerForm = this.fb.group({
-      username: ['', Validators.required],
+      /*username: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
       password2: ['', Validators.required],
@@ -50,8 +55,8 @@ export class RegisterComponent implements OnInit {
       nameClinic: ['', Validators.required],
       addressClinic: ['', Validators.required],
       phoneNumberClinic: ['', Validators.required],
-      emailClinic: ['', Validators.required]
-      /* username: ['kenneth', Validators.required],
+      emailClinic: ['', Validators.required]*/
+       username: ['kenneth', Validators.required],
       email: ['kenneth.ferre@gmail.com', Validators.required],
       password: ['password', Validators.required],
       password2: ['passwordd', Validators.required],
@@ -63,7 +68,7 @@ export class RegisterComponent implements OnInit {
       nameClinic: ['Super Clinic', Validators.required],
       addressClinic: ['C/Moli de la torre', Validators.required],
       phoneNumberClinic: ['650190006', Validators.required],
-      emailClinic: ['kenneth.ferre@gmail.com', Validators.required]*/
+      emailClinic: ['kenneth.ferre@gmail.com', Validators.required]
     });
 
     this.inicializeForm();
@@ -78,7 +83,7 @@ export class RegisterComponent implements OnInit {
       (field) => {
         _password = this.registerForm.controls['password'].value;
         _password2 = this.registerForm.controls['password2'].value;
-        if (_password != null && _password === _password2 && _password.length >= 6) {
+        if (_password != '' && _password === _password2 && _password.length >= 6) {
           this.msgPsswd = ''
           this.psswdValid = true;
 
@@ -96,7 +101,34 @@ export class RegisterComponent implements OnInit {
           this.emailValid = false;
         }
 
-        if (this.emailValid && this.psswdValid &&
+        if (this.isValidEmail(this.registerForm.controls['emailClinic'].value)) {
+          this.msgEmailClinic = ''
+          this.emailValid = true;
+        } else {
+          this.msgEmailClinic = 'invalid email'
+          this.emailValid = false;
+        }
+
+        let _colegiateNum = this.registerForm.controls['collegiateNumber'].value
+        
+
+        if (!Number(_colegiateNum)) {
+          this.msgColegiateNumber = 'only numbers'
+          this.colegiateNumberValid= false;
+        } else {
+          this.msgColegiateNumber = ''
+          this.colegiateNumberValid= true;
+        }
+
+        if (_colegiateNum.length<=9) {
+          this.msgColegiateNumber += ''
+          this.colegiateNumberLengthValid= true;
+        } else {
+          this.colegiateNumberLengthValid= false;
+          this.msgColegiateNumber+=', max length 9'
+        }
+
+        if (this.emailValid && this.psswdValid && this.colegiateNumberValid && this.colegiateNumberLengthValid &&
           this.registerForm.controls['username'].value != '' &&
           this.registerForm.controls['name'].value != '' &&
           this.registerForm.controls['surnames'].value != '' &&
@@ -112,6 +144,7 @@ export class RegisterComponent implements OnInit {
           this.messageForm = '';
           this.msgPsswd = ''
           this.msgEmail = ''
+          this.msgEmailClinic = '';
         } else {
           this.messageForm = 'all fields is required'
           this.showButtonsForm = false;
@@ -138,6 +171,7 @@ export class RegisterComponent implements OnInit {
       },
 
       (error) => {
+        console.log(this.registerForm.value)
         this.toast.warning('Something went wrong, try to register again', 'Registration could not be completed')
       }
     );

@@ -446,7 +446,7 @@ export class DashboardComponent implements OnInit {
         display: false
       },
       data: {
-        labels: ['USA', 'GER', 'AUS', 'UK', 'RO', 'BR'],
+        labels: ['JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
         datasets: [{
           label: "Countries",
           fill: true,
