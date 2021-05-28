@@ -11,7 +11,7 @@ import { UserService } from '../../services/user.service';
 
 import { UploadFileService } from '../../services/upload-file.service';
 
-const MAX_FILE_SIZE: number = 3430858425;//13723433701(max size backend)/4
+const MAX_FILE_SIZE: number = 1048576;//13723433701(max size backend)/4
 
 const FILE_EXTENSIONS: string[] = ['jpg', 'JPG', 'png', 'PNG', 'jpeg', 'JPEG',]
 
@@ -224,7 +224,7 @@ export class UserComponent implements OnInit {
     this.profileForm.controls['collegiateNumber'].setValue(this.userLogged.collegiateNumber);
     this.profileForm.controls['isAdminRole'].setValue(this.roleUser === 1 || this.roleUser === 2);
     this.profileForm.controls['active'].setValue(true);
-    
+
 
     let _name = this.profileForm.controls['name'].value;
     let _surnames = this.profileForm.controls['surnames'].value;
@@ -244,7 +244,7 @@ export class UserComponent implements OnInit {
           (_phone != this.profileForm.controls['phone'].value && this.profileForm.controls['phone'].value.length > 0) ||
           _specialistType != this.profileForm.controls['specialistType'].value ||
           _collegiateNumber != this.profileForm.controls['collegiateNumber'].value ||
-          _isAdminRole != this.profileForm.controls['isAdminRole'].value||
+          _isAdminRole != this.profileForm.controls['isAdminRole'].value ||
           _active != this.profileForm.controls['active'].value) {
 
           this.changeProfileForm = true;
@@ -260,67 +260,40 @@ export class UserComponent implements OnInit {
 
   }
 
-  public uploadPhoto() {
-    var formData: any = new FormData();
-    formData.append("file", this.fileForm.get('file').value);
-
-    this.uploadFileService.uploadFileUser(formData, this.userLogged.id).pipe(takeUntil(this.destroy$)).subscribe(
-      res => {
-        console.log(res)
-        console.log(this.userLogged)
-        this.userLogged.photoUrl = res['url']
-        console.log(this.userLogged)
-        this.userService.setUserLogged(this.userLogged)
-        //this.userService.userLogged.photoUrl = res['url']
-        this.toast.success('Photo updated', 'Successfuly')
-        this.previewImageStr = ''
-      }
-    );
-
-  }
-
   onFileChange(event) {
     const reader = new FileReader();
 
     if (event.target.files && event.target.files.length === 1) {
       let fileName = event.target.files[0].name
       let fileExtension = fileName.split(".", 2);
-      if (FILE_EXTENSIONS.includes(fileExtension[1])) { //TODO check file size MAX_FILE_SIZE
-        console.log('format correct')
-      } else {
+
+
+      if (!FILE_EXTENSIONS.includes(fileExtension[1]) || event.target.files[0].size >= MAX_FILE_SIZE) {
         console.log('format INcorrect')
+        console.log('file size es muy grande')
+        this.toast.info('Wrong format or size too large, please choose other image', 'Info')
+      } else {
+        const [file] = event.target.files;
+        this.fileForm.get('file').setValue(file)
+        var formData: any = new FormData();
+        formData.append("file", this.fileForm.get('file').value);
+
+        this.uploadFileService.uploadFileUser(formData, this.userLogged.id).pipe(takeUntil(this.destroy$)).subscribe(
+          res => {
+            this.userLogged.photoUrl = res['url']
+            this.userService.setUserLogged(this.userLogged)
+            this.toast.success('Photo updated', 'Successfuly')
+            this.previewImageStr = ''
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+              this.previewImageStr = reader.result as string;
+            };
+          }
+        );
       }
-
-
-      const [file] = event.target.files;
-      this.fileForm.get('file').setValue(file)
-      var formData: any = new FormData();
-      formData.append("file", this.fileForm.get('file').value);
-
-      this.uploadFileService.uploadFileUser(formData, this.userLogged.id).pipe(takeUntil(this.destroy$)).subscribe(
-        res => {
-          this.userLogged.photoUrl = res['url']
-          this.userService.setUserLogged(this.userLogged)
-          this.toast.success('Photo updated', 'Successfuly')
-          this.previewImageStr = ''
-          reader.readAsDataURL(file);
-          reader.onload = () => {
-            this.previewImageStr = reader.result as string;
-          };
-        }
-      );
-
-
-
-
-
-
     }
   }
 
-  cancelUploadPhoto() {
-    this.previewImageStr = null;
-  }
 
   matchTwoPasswords(psw1: string, psw2: string): boolean {
     return psw1 === psw2;
